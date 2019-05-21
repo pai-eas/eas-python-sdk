@@ -132,6 +132,11 @@ class PredictClient:
                                                     body=req.to_string(),
                                                     timeout=self.timeout/1000.0,
                                                     retries=0)
+                if resp.status / 100 == 5:
+                    if i != self.retry_count - 1:
+                        continue
+                    raise PredictException(resp.status, resp.data)
+
                 if resp.status != 200:
                     raise PredictException(resp.status, resp.data)
 
