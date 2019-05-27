@@ -9,7 +9,12 @@ from urllib3.exceptions import ProtocolError
 from urllib3.exceptions import HTTPError
 from exception import PredictException
 from vipserver_endpoint import VipServerEndpoint
+from cacheserver_endpoint import CacheServerEndpoint
 from gateway_endpoint import GatewayEndpoint
+
+ENDPOINT_TYPE_DIRECT = 'DIRECT'
+ENDPOINT_TYPE_VIPSERVER = 'VIPSERVER'
+ENDPOINT_TYPE_DEFAULT = 'DEFAULT'
 
 
 class PredictClient:
@@ -17,6 +22,7 @@ class PredictClient:
     Client for accessing prediction service by creating a fixed size connection pool
     to perform the request through established persistent connections.
     """
+
     def __init__(self, endpoint='', service_name=''):
         self.retry_count = 5
         self.max_connection_count = 100
@@ -24,7 +30,7 @@ class PredictClient:
         self.endpoint = None
         self.timeout = 5000
         self.connection_pool = None
-        self.endpoint_type = 'GATEWAY'
+        self.endpoint_type = ''
         self.endpoint_name = endpoint
         self.service_name = service_name
         self.stop = False
@@ -34,7 +40,7 @@ class PredictClient:
             if self.stop:
                 break
             self.endpoint.sync()
-            time.sleep(1)
+            time.sleep(3)
 
     def destroy(self):
         self.stop = True
@@ -46,12 +52,12 @@ class PredictClient:
         if self.connection_pool is None:
             self.connection_pool = PoolManager(self.max_connection_count)
 
-        if self.endpoint_type == 'GATEWAY':
+        if self.endpoint_type == '' or self.endpoint_type == ENDPOINT_TYPE_DEFAULT:
             self.endpoint = GatewayEndpoint(self.endpoint_name)
-        elif self.endpoint_type == 'VIPSERVER':
+        elif self.endpoint_type == ENDPOINT_TYPE_VIPSERVER:
             self.endpoint = VipServerEndpoint(self.endpoint_name)
-        elif self.endpoint_type == 'DIRECT':
-            pass
+        elif self.endpoint_type == ENDPOINT_TYPE_DIRECT:
+            self.endpoint = CacheServerEndpoint(self.endpoint_name, self.service_name)
         else:
             raise PredictException(500, 'Unsupported endpoint type: %s' % self.endpoint_type)
 
@@ -130,7 +136,7 @@ class PredictClient:
                 resp = self.connection_pool.request('POST', url,
                                                     headers=headers,
                                                     body=req.to_string(),
-                                                    timeout=self.timeout/1000.0,
+                                                    timeout=self.timeout / 1000.0,
                                                     retries=0)
                 if resp.status / 100 == 5:
                     if i != self.retry_count - 1:
