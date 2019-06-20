@@ -7,10 +7,10 @@ from urllib3 import PoolManager
 from urllib3.exceptions import MaxRetryError
 from urllib3.exceptions import ProtocolError
 from urllib3.exceptions import HTTPError
-from exception import PredictException
-from vipserver_endpoint import VipServerEndpoint
-from cacheserver_endpoint import CacheServerEndpoint
-from gateway_endpoint import GatewayEndpoint
+from .exception import PredictException
+from .vipserver_endpoint import VipServerEndpoint
+from .cacheserver_endpoint import CacheServerEndpoint
+from .gateway_endpoint import GatewayEndpoint
 
 ENDPOINT_TYPE_DIRECT = 'DIRECT'
 ENDPOINT_TYPE_VIPSERVER = 'VIPSERVER'
@@ -135,7 +135,7 @@ class PredictClient:
                 url = '%s/api/predict/%s' % (domain, self.service_name)
                 resp = self.connection_pool.request('POST', url,
                                                     headers=headers,
-                                                    body=req.to_string(),
+                                                    body=bytearray(req.to_string()),
                                                     timeout=self.timeout / 1000.0,
                                                     retries=0)
                 if resp.status / 100 == 5:

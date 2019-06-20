@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from weighted_round_robin import WRRScheduler
+from .weighted_round_robin import WRRScheduler
 from threading import Lock
 import time
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from endpoint import Endpoint
+from .endpoint import Endpoint
 
 
 class GatewayEndpoint(Endpoint):

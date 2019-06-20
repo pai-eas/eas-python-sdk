@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from request import Request
-from request import Response
+from .request import Request
+from .request import Response
 
 
 class StringRequest(Request):

@@ -3,10 +3,10 @@
 
 import unittest
 
-from predict_client import PredictClient
-from string_request import StringRequest
-from tf_request import TFRequest
-from exception import PredictException
+from .predict_client import PredictClient
+from .string_request import StringRequest
+from .tf_request import TFRequest
+from .exception import PredictException
 
 
 class PredictClientTestCase(unittest.TestCase):

@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from request import Request
-from request import Response
-import tf_request_pb2 as tf_pb
+from .request import Request
+from .request import Response
+from . import tf_request_pb2 as tf_pb
 
 
 class TFRequest(Request):
