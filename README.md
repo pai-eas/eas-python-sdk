@@ -1,10 +1,10 @@
 # Python SDK调用接口说明
 |类|主要接口|描述|
 |-----|------|------|
-|PredictClient|PredictClient(endpoint, service_name)|PredictClient类构造器，endpoint是服务端的endpoint地址，对于普通服务设置为默认网关endpoint，如eas-shanghai-intranet.alibaba-inc.com；对于vipserver的服务，设置为vipserver的domain，如：eas-test.shanghai.eas.vipserver；service_name为服务名字；两个参数均可为空，在初始化后单独进行设置。|
+|PredictClient|PredictClient(endpoint, service_name)|PredictClient类构造器，endpoint是服务端的endpoint地址，对于普通服务设置为默认网关endpoint，如eas-shanghai-intranet.alibaba-inc.com；service_name为服务名字；两个参数均可为空，在初始化后单独进行设置。|
 ||set_endpoint(endpoint)|设置服务的endpoint，endpoint的说明见构造函数|
 ||set_service_name(service_name)|设置请求的服务名字|
-||set_endpoint_type(endpoint_type)|设置服务端的网关类型，支持默认网关PredictClient.ENDPOINT_TYPE_GATEWAY，PredictClient.ENDPOINT_TYPE_VIPSERVER，PredictClient.ENDPOINT_TYPE_DIRECT(内部用户请忽略)，默认值为PredictClient.ENDPOINT_TYPE_GATEWAY|
+||set_endpoint_type(endpoint_type)|设置服务端的网关类型，支持默认网关PredictClient.ENDPOINT_TYPE_GATEWAY，PredictClient.ENDPOINT_TYPE_DIRECT，默认值为PredictClient.ENDPOINT_TYPE_GATEWAY|
 ||set_token(token)|设置服务访问的token|
 ||set_retry_count(max_retry_count)|设置请求失败重试次数，默认为5；该参数非常重要，对于服务端进程异常或机器异常或网关长连接断开等情况带来的个别请求失败，均需由客户端来重试解决，请勿将其设置为0|
 ||set_max_connection_count(max_connection_count)|设置客户端连接池的最大大小，出于性能考虑，客户端会与服务端建立长连接，并将连接放入连接池中，每次请求从中获取一个空闲连接来访问服务；默认值为100|
@@ -31,7 +31,7 @@ from eas_prediction import PredictClient
 from eas_prediction import StringRequest
 
 if __name__ == '__main__':
-    client = PredictClient('http://eas-shanghai-intranet.alibaba-inc.com', 'scorecard_pmml_example')
+    client = PredictClient('http://pai-eas-vpc.cn-shanghai.aliyuncs.com', 'scorecard_pmml_example')
     client.set_token('NjEyY2EwZTY0OWUyOWY3ZDAzNDU2ZWMwOGFlZjA3YjUwMjA0MzViNw==')
     client.init()
 
@@ -50,7 +50,7 @@ from eas_prediction import StringRequest
 from eas_prediction import TFRequest
 
 if __name__ == '__main__':
-    client = PredictClient('http://eas-shanghai-intranet.alibaba-inc.com', 'mnist_saved_model_example')
+    client = PredictClient('http://pai-eas-vpc.cn-shanghai.aliyuncs.com', 'mnist_saved_model_example')
     #client.set_token('M2FhNjJlZDBmMzBmMzE4NjFiNzZhMmUxY2IxZjkyMDczNzAzYjFiMw==')
     client.init()
 

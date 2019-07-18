@@ -16,7 +16,7 @@ class PredictClientTestCase(unittest.TestCase):
         self.client = PredictClient()
 
     def setUp(self):
-        self.client.set_endpoint('http://pai-eas-internet.cn-shanghai.aliyuncs.com')
+        self.client.set_endpoint('http://pai-eas-vpc.cn-shanghai.aliyuncs.com')
         self.client.set_service_name('scorecard_pmml_example')
         self.client.set_token('YWFlMDYyZDNmNTc3M2I3MzMwYmY0MmYwM2Y2MTYxMTY4NzBkNzdjOQ==')
         self.client.init()
