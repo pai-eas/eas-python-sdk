@@ -1,3 +1,9 @@
+# 安装方法：
+
+```bash
+pip install -U eas-prediction --user
+```
+
 # Python SDK调用接口说明
 |类|主要接口|描述|
 |-----|------|------|
@@ -40,8 +46,10 @@ if __name__ == '__main__':
         resp = client.predict(request)
         print(resp)
 ```
+
 ## Tensorflow输入输出程序示例
 TF用户可以使用TFRequest与TFResponse作为数据的输入输出格式，具体demo示例如下：
+
 ```python
 #!/usr/bin/env python
 
@@ -59,5 +67,30 @@ if __name__ == '__main__':
     req.add_feed('images', [1, 784], TFRequest.DT_FLOAT, [1] * 784)
     for x in range(0, 1000000):
         resp = client.predict(req)
+        print(resp)
+```
+
+## 通过VPC网络直连的方式调用服务
+
+网络直连方式仅支持部署在EAS公共云控制台中购买专用资源组的服务，且需要在控制台上为该资源组与用户指定的vswitch打通网络后才可使用。调用方法与普通调用方式相比，增加一句 **client.set_endpoint_type(ENDPOINT_TYPE_DIRECT)** 即可，非常适合大流量高并发的服务。
+
+```python
+#!/usr/bin/env python
+
+from eas_prediction import PredictClient
+from eas_prediction import StringRequest
+from eas_prediction import TFRequest
+from eas_prediction import ENDPOINT_TYPE_DIRECT
+
+if __name__ == '__main__':
+    client = PredictClient('pai-eas-vpc.cn-hangzhou.aliyuncs.com', 'mnist_saved_model_example')
+    client.set_token('M2FhNjJlZDBmMzBmMzE4NjFiNzZhMmUxY2IxZjkyMDczNzAzYjFiMw==')
+    client.set_endpoint_type(ENDPOINT_TYPE_DIRECT)
+    client.init()
+
+    request = TFRequest('predict_images')
+    request.add_feed('images', [1, 784], TFRequest.DT_FLOAT, [1] * 784)
+    for x in range(0, 1000000):
+        resp = client.predict(request)
         print(resp)
 ```
