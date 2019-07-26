@@ -51,7 +51,7 @@ class TFRequest(Request):
         elif content_type == tf_pb.DT_DOUBLE:
             self.request_data.inputs[input_name].double_val.extend(content)
         elif content_type == tf_pb.DT_INT8 or content_type == tf_pb.DT_INT16 or \
-                content_type == tf_pb.DT_INT32:
+                content_type == tf_pb.DT_INT32 or content_type == tf_pb.DT_INT64:
             self.request_data.inputs[input_name].int_val.extend(content)
         elif content_type == tf_pb.DT_INT64:
             self.request_data.inputs[input_name].int64_val.extend(content)
@@ -59,6 +59,15 @@ class TFRequest(Request):
             self.request_data.inputs[input_name].bool_val.extend(content)
         elif content_type == tf_pb.DT_STRING:
             self.request_data.inputs[input_name].string_val.extend(content)
+
+    def add_fetch(self, output_name):
+        """
+        Add output node name for the request to get, if not specified, then all the known outputs are fetched,
+        but for frozen models, the output name must be specified, or else the service would throw exception like:
+        'Must specify at least one target to fetch or execute.'
+        :param output_name: name of the output node to fetch
+        """
+        self.request_data.output_filter.append(output_name)
 
     def to_string(self):
         """
@@ -105,7 +114,7 @@ class TFResponse(Response):
         if output.dtype == TFRequest.DT_FLOAT:
             return output.float_val
         elif output.dtype == TFRequest.DT_INT8 or output.dtype == TFRequest.DT_INT16 or \
-                output.dtype == TFRequest.DT_INT32:
+                output.dtype == TFRequest.DT_INT32 or output.dtype == TFRequest.DT_INT64:
             return output.int_val
         elif output.dtype == TFRequest.DT_DOUBLE:
             return output.double_val

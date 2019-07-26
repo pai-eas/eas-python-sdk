@@ -64,7 +64,7 @@ class PredictClient:
         t = threading.Thread(target=PredictClient.__sync_handler, args=(self,))
         t.daemon = True
         t.start()
-        print('Endpoint sync thread started')
+        # print('Endpoint sync thread started')
 
     def set_endpoint(self, endpoint):
         """
