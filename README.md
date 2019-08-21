@@ -25,6 +25,12 @@ pip install -U eas-prediction --user
 ||to_string()|将TFRequest中所构建的用于请求传输的protobuf对象序列化成string|
 |TFResponse|get_tensor_shape(output_name)|获得别名为ouputname的输出Tensor的TensorShape|
 ||get_values(output_name)|获取输出的tensor的数据向量，输出结果以一维数组的形式保存，可配套使用get_tensor_shape()获取对应的tensor的shape，将其还原成所需的多维tensor，输出会根据output的类型不同，返回不同类型的结果数组|
+|TorchRequest|TorchRequest()|TFRequest类构建方法|
+||def add_feed(self, index, shape, content_type, content)|请求PyTorch的在线预测服务模型时，设置需要输入的Tensor，index表示要输入的tensor的下标，data_type表示输入Tensor的DataType， shape表示输入Tensor的TensorShape，content表示输入Tensor的内容（一维数组展开表示）。DataType支持如下几种类型：TFRequest.DT_FLOAT, TFRequest.DT_DOUBLE, TFRequest.DT_INT8, TFRequest.DT_INT16, TFRequest.DT_INT32, TFRequest.DT_INT64, TFRequest.DT_STRING, TFRequest.TF_BOOL|
+||def add_fetch(self, output_index)|请求PyTorch的在线预测服务模型时，设置需要输出的Tensor的index，可选，若不设置，则输出所有的outputs|
+||to_string()|将TorchRequest中所构建的用于请求传输的protobuf对象序列化成string|
+|TorchResponse|get_tensor_shape(output_index)|获得下标index的输出Tensor的TensorShape|
+||get_values(output_index)|获取输出的tensor的数据向量，输出结果以一维数组的形式保存，可配套使用get_tensor_shape()获取对应的tensor的shape，将其还原成所需的多维tensor，输出会根据output的类型不同，返回不同类型的结果数组|
 
 
 # 程序示例
@@ -94,4 +100,35 @@ if __name__ == '__main__':
     for x in range(0, 1000000):
         resp = client.predict(request)
         print(resp)
+```
+
+
+## PyTorch输入输出程序示例
+PyTorch用户可以使用TorchRequest与TorchResponse作为数据的输入输出格式，具体demo示例如下：
+
+```python
+#!/usr/bin/env python
+
+from eas_prediction import PredictClient
+from eas_prediction import TorchRequest
+
+if __name__ == '__main__':
+    client = PredictClient('http://pai-eas-vpc.cn-shanghai.aliyuncs.com', 'pytorch_gpu_wl')
+    # client = PredictClient('http://eas-beijing.alibaba-inc.com', 'pytorch_gpu_wl')
+    # client.set_token('M2FhNjJlZDBmMzBmMzE4NjFiNzZhMmUxY2IxZjkyMDczNzAzYjFiMw==')
+    client.init()
+
+    req = TorchRequest()
+    req.add_feed(0, [1, 3, 224, 224], TFRequest.DT_FLOAT, [1] * 150528)
+    # req.add_fetch(0)
+    import time
+    st = time.time()
+    timer = 0
+    for x in range(0, 10):
+        resp = client.predict(req)
+        timer += (time.time() - st)
+        st = time.time()
+        print(resp.get_tensor_shape(0))
+        # print(resp)
+    print("average response time: %s s" % (timer / 10) )
 ```

@@ -6,6 +6,7 @@ import unittest
 from .predict_client import PredictClient
 from .string_request import StringRequest
 from .tf_request import TFRequest
+from .torch_request import TorchRequest
 from .exception import PredictException
 
 
@@ -47,6 +48,25 @@ class PredictClientTestCase(unittest.TestCase):
     def test_prediction_bad_endpoint(self):
         req = StringRequest('[{}]')
         response = self.client.predict(req)
+
+    def test_prediction_pytorch(self):
+        client = PredictClient('http://pai-eas-vpc.cn-shanghai.aliyuncs.com', 'pytorch_gpu_wl')
+        # client.set_token('M2FhNjJlZDBmMzBmMzE4NjFiNzZhMmUxY2IxZjkyMDczNzAzYjFiMw==')
+        client.init()
+
+        req = TorchRequest()
+        req.add_feed(0, [1, 3, 224, 224], TFRequest.DT_FLOAT, [1] * 150528)
+        # req.add_fetch(0)
+        import time
+        st = time.time()
+        timer = 0
+        for x in range(0, 10):
+            resp = client.predict(req)
+            timer += (time.time() - st)
+            st = time.time()
+            print(resp.get_tensor_shape(0))
+            # print(resp)
+        print("average response time: %s s" % (timer / 10) )
 
     def test_prediction_tensorflow(self):
         self.client.set_service_name('mnist_saved_model_example')

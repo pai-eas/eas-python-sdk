@@ -51,7 +51,7 @@ class TFRequest(Request):
         elif content_type == tf_pb.DT_DOUBLE:
             self.request_data.inputs[input_name].double_val.extend(content)
         elif content_type == tf_pb.DT_INT8 or content_type == tf_pb.DT_INT16 or \
-                content_type == tf_pb.DT_INT32 or content_type == tf_pb.DT_INT64:
+                content_type == tf_pb.DT_INT32:
             self.request_data.inputs[input_name].int_val.extend(content)
         elif content_type == tf_pb.DT_INT64:
             self.request_data.inputs[input_name].int64_val.extend(content)
@@ -89,6 +89,7 @@ class TFResponse(Response):
     """
     Deserialize the response data to a structured object for users to read
     """
+
     def __init__(self, response_data=None):
         self.response = tf_pb.PredictResponse()
         self.response.ParseFromString(response_data)
@@ -114,13 +115,13 @@ class TFResponse(Response):
         if output.dtype == TFRequest.DT_FLOAT:
             return output.float_val
         elif output.dtype == TFRequest.DT_INT8 or output.dtype == TFRequest.DT_INT16 or \
-                output.dtype == TFRequest.DT_INT32 or output.dtype == TFRequest.DT_INT64:
+                output.dtype == TFRequest.DT_INT32:
             return output.int_val
+        elif output.dtype == TFRequest.DT_INT64:
+            return output.int64_val
         elif output.dtype == TFRequest.DT_DOUBLE:
             return output.double_val
         elif output.dtype == TFRequest.DT_STRING:
             return output.string_val
         elif output.dtype == TFRequest.DT_BOOL:
             return output.bool_val
-
-
