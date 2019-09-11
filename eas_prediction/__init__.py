@@ -5,6 +5,8 @@ from .exception import PredictException
 from .predict_client import PredictClient
 from .tf_request import TFRequest
 from .tf_request import TFResponse
+from .blade_request import BladeRequest
+from .blade_request import BladeResponse 
 from .string_request import StringRequest
 from .string_request import StringResponse
 from .predict_client import ENDPOINT_TYPE_DIRECT

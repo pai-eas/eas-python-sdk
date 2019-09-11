@@ -114,13 +114,43 @@ from eas_prediction import TorchRequest
 
 if __name__ == '__main__':
     client = PredictClient('http://pai-eas-vpc.cn-shanghai.aliyuncs.com', 'pytorch_gpu_wl')
-    # client = PredictClient('http://eas-beijing.alibaba-inc.com', 'pytorch_gpu_wl')
-    # client.set_token('M2FhNjJlZDBmMzBmMzE4NjFiNzZhMmUxY2IxZjkyMDczNzAzYjFiMw==')
     client.init()
 
     req = TorchRequest()
     req.add_feed(0, [1, 3, 224, 224], TFRequest.DT_FLOAT, [1] * 150528)
     # req.add_fetch(0)
+    import time
+    st = time.time()
+    timer = 0
+    for x in range(0, 10):
+        resp = client.predict(req)
+        timer += (time.time() - st)
+        st = time.time()
+        print(resp.get_tensor_shape(0))
+        # print(resp)
+    print("average response time: %s s" % (timer / 10) )
+```
+
+
+## BladeProcessor输入输出程序示例
+BladeProcessor用户可以使用BladeRequest与BladeResponse作为数据的输入输出格式，具体demo示例如下：
+
+```python
+#!/usr/bin/env python
+
+from eas_prediction import PredictClient
+from eas_prediction import BladeRequest 
+
+if __name__ == '__main__':
+    client = PredictClient('http://pai-eas-vpc.cn-shanghai.aliyuncs.com', 'nlp_model_example')
+    client.init()
+
+    req = BladeRequest()
+
+    req.add_feed(0, [1, 3, 224, 224], BladeRequest.DT_FLOAT, [1] * 150528)
+    req.add_feed('input_data_placeholder', 1, [1, 360, 128], BladeRequest.DT_FLOAT, [0.8] * 85680)
+    req.add_feed('input_length_placeholder', 1, [1], BladeRequest.DT_FLOAT, [264])
+    req.add_feed('output', BladeRequest.DT_FLOAT)
     import time
     st = time.time()
     timer = 0
