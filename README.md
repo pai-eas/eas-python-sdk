@@ -147,10 +147,10 @@ if __name__ == '__main__':
 
     req = BladeRequest()
 
-    req.add_feed(0, [1, 3, 224, 224], BladeRequest.DT_FLOAT, [1] * 150528)
-    req.add_feed('input_data_placeholder', 1, [1, 360, 128], BladeRequest.DT_FLOAT, [0.8] * 85680)
-    req.add_feed('input_length_placeholder', 1, [1], BladeRequest.DT_FLOAT, [264])
-    req.add_feed('output', BladeRequest.DT_FLOAT)
+    req.add_feed('input_data', 1, [1, 360, 128], BladeRequest.DT_FLOAT, [0.8] * 85680)
+    req.add_feed('input_length', 1, [1], BladeRequest.DT_INT32, [187])
+    req.add_feed('start_token', 1, [1], BladeRequest.DT_INT32, [104])
+    req.add_fetch('output', BladeRequest.DT_FLOAT)
     import time
     st = time.time()
     timer = 0
@@ -158,7 +158,42 @@ if __name__ == '__main__':
         resp = client.predict(req)
         timer += (time.time() - st)
         st = time.time()
-        print(resp.get_tensor_shape(0))
         # print(resp)
+        # print(resp.get_values('output'))
+        print(resp.get_tensor_shape('output'))
+    print("average response time: %s s" % (timer / 10) )
+```
+
+
+## 兼容EAS默认tensorflow接口的BladeProcessor输入输出程序示例
+BladeProcessor用户可以使用"兼容EAS默认tensorflow接口"TFRequest与TFResponse作为数据的输入输出格式, 具体demo示例如下：
+NOTE: 需要正确import [eas_prediction/blade_tf_request.py](./eas_prediction/blade_tf_request.py) 文件内定义的TFRequest与TFResponse
+
+```python
+#!/usr/bin/env python
+
+from eas_prediction import PredictClient
+from eas_prediction.blade_tf_request import TFRequest # Need Importing blade TFRequest 
+
+if __name__ == '__main__':
+    client = PredictClient('http://pai-eas-vpc.cn-shanghai.aliyuncs.com', 'nlp_model_example')
+    client.init()
+
+    req = TFRequest()
+
+    req.add_feed('input_data', [1, 360, 128], TFRequest.DT_FLOAT, [0.8] * 85680)
+    req.add_feed('input_length', [1], TFRequest.DT_INT32, [187])
+    req.add_feed('start_token', [1], TFRequest.DT_INT32, [104])
+    req.add_fetch('output')
+    import time
+    st = time.time()
+    timer = 0
+    for x in range(0, 10):
+        resp = client.predict(req)
+        timer += (time.time() - st)
+        st = time.time()
+        # print(resp)
+        # print(resp.get_values('output'))
+        print(resp.get_tensor_shape('output'))
     print("average response time: %s s" % (timer / 10) )
 ```
