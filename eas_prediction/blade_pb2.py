@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='blade',
   syntax='proto2',
   serialized_options=None,
-  serialized_pb=_b('\n\x0b\x62lade.proto\x12\x05\x62lade\"\x18\n\x05Shape\x12\x0f\n\x03\x64im\x18\x01 \x03(\x03\x42\x02\x10\x01\"\xc1\x01\n\x05\x41rray\x12\x17\n\x0f\x62lade_blob_name\x18\x01 \x01(\t\x12\x18\n\x10name_in_dl_model\x18\x02 \x01(\t\x12\x11\n\tbatchsize\x18\x03 \x02(\x05\x12\x1b\n\x05shape\x18\x04 \x01(\x0b\x32\x0c.blade.Shape\x12\x15\n\tfloat_val\x18\x05 \x03(\x02\x42\x02\x10\x01\x12\x13\n\x07int_val\x18\x06 \x03(\x05\x42\x02\x10\x01\x12\x15\n\tint64_val\x18\x07 \x03(\x03\x42\x02\x10\x01\x12\x12\n\nstring_val\x18\x08 \x03(\x0c\"c\n\nOutputInfo\x12\x17\n\x0f\x62lade_blob_name\x18\x01 \x01(\t\x12\x18\n\x10name_in_dl_model\x18\x02 \x01(\t\x12\"\n\tdata_type\x18\x03 \x02(\x0e\x32\x0f.blade.DataType\"j\n\x07Request\x12\x19\n\x11tf_signature_name\x18\x01 \x01(\t\x12\x1c\n\x06inputs\x18\x02 \x03(\x0b\x32\x0c.blade.Array\x12&\n\x0boutput_info\x18\x03 \x03(\x0b\x32\x11.blade.OutputInfo\")\n\x08Response\x12\x1d\n\x07outputs\x18\x01 \x03(\x0b\x32\x0c.blade.Array*S\n\x08\x44\x61taType\x12\x0c\n\x08\x44T_FLOAT\x10\x00\x12\x0c\n\x08\x44T_INT32\x10\x01\x12\x0c\n\x08\x44T_INT64\x10\x02\x12\r\n\tDT_STRING\x10\x03\x12\x0e\n\nDT_UNKNOWN\x10\x04')
+  serialized_pb=_b('\n\x0b\x62lade.proto\x12\x05\x62lade\"\x18\n\x05Shape\x12\x0f\n\x03\x64im\x18\x01 \x03(\x03\x42\x02\x10\x01\"\xc1\x01\n\x05\x41rray\x12\x17\n\x0f\x62lade_blob_name\x18\x01 \x01(\t\x12\x18\n\x10name_in_dl_model\x18\x02 \x01(\t\x12\x11\n\tbatchsize\x18\x03 \x02(\x05\x12\x1b\n\x05shape\x18\x04 \x01(\x0b\x32\x0c.blade.Shape\x12\x15\n\tfloat_val\x18\x05 \x03(\x02\x42\x02\x10\x01\x12\x13\n\x07int_val\x18\x06 \x03(\x05\x42\x02\x10\x01\x12\x15\n\tint64_val\x18\x07 \x03(\x03\x42\x02\x10\x01\x12\x12\n\nstring_val\x18\x08 \x03(\x0c\"c\n\nOutputInfo\x12\x17\n\x0f\x62lade_blob_name\x18\x01 \x01(\t\x12\x18\n\x10name_in_dl_model\x18\x02 \x01(\t\x12\"\n\tdata_type\x18\x03 \x01(\x0e\x32\x0f.blade.DataType\"j\n\x07Request\x12\x19\n\x11tf_signature_name\x18\x01 \x01(\t\x12\x1c\n\x06inputs\x18\x02 \x03(\x0b\x32\x0c.blade.Array\x12&\n\x0boutput_info\x18\x03 \x03(\x0b\x32\x11.blade.OutputInfo\")\n\x08Response\x12\x1d\n\x07outputs\x18\x01 \x03(\x0b\x32\x0c.blade.Array*S\n\x08\x44\x61taType\x12\x0e\n\nDT_UNKNOWN\x10\x00\x12\x0c\n\x08\x44T_FLOAT\x10\x01\x12\x0c\n\x08\x44T_INT32\x10\x02\x12\x0c\n\x08\x44T_INT64\x10\x03\x12\r\n\tDT_STRING\x10\x04')
 )
 
 _DATATYPE = _descriptor.EnumDescriptor(
@@ -30,23 +30,23 @@ _DATATYPE = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='DT_FLOAT', index=0, number=0,
+      name='DT_UNKNOWN', index=0, number=0,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DT_INT32', index=1, number=1,
+      name='DT_FLOAT', index=1, number=1,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DT_INT64', index=2, number=2,
+      name='DT_INT32', index=2, number=2,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DT_STRING', index=3, number=3,
+      name='DT_INT64', index=3, number=3,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DT_UNKNOWN', index=4, number=4,
+      name='DT_STRING', index=4, number=4,
       serialized_options=None,
       type=None),
   ],
@@ -58,11 +58,11 @@ _DATATYPE = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_DATATYPE)
 
 DataType = enum_type_wrapper.EnumTypeWrapper(_DATATYPE)
-DT_FLOAT = 0
-DT_INT32 = 1
-DT_INT64 = 2
-DT_STRING = 3
-DT_UNKNOWN = 4
+DT_UNKNOWN = 0
+DT_FLOAT = 1
+DT_INT32 = 2
+DT_INT64 = 3
+DT_STRING = 4
 
 
 
@@ -200,7 +200,7 @@ _OUTPUTINFO = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='data_type', full_name='blade.OutputInfo.data_type', index=2,
-      number=3, type=14, cpp_type=8, label=2,
+      number=3, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
