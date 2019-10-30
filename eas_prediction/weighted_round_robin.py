@@ -3,7 +3,10 @@
 #  Description: Implementation of WeightedRoundRobin algorithm.
 ########
 
+import sys
+import math
 import fractions
+import functools
 
 
 class WRRScheduler:
@@ -20,7 +23,10 @@ class WRRScheduler:
     def _init_dataset(self, s):
         self.data_set = s
         self.max_s = max(s, key=lambda x: x[1])[1]
-        self.gcd_s = reduce(fractions.gcd, [weight for data, weight in s])
+        if sys.version_info[0] < 3:
+            self.gcd_s = functools.reduce(fractions.gcd, [weight for data, weight in s])
+        else:
+            self.gcd_s = functools.reduce(math.gcd, [weight for data, weight in s])
         self.len_s = len(s)
 
     def schedule(self):

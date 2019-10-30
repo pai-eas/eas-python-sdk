@@ -3,6 +3,7 @@
 
 import threading
 import time
+import sys
 from urllib3 import PoolManager
 from urllib3.exceptions import MaxRetryError
 from urllib3.exceptions import ProtocolError
@@ -39,7 +40,10 @@ class PredictClient:
         while True:
             if self.stop:
                 break
-            self.endpoint.sync()
+            try:
+                self.endpoint.sync()
+            except PredictException as e:
+                print(str(e))
             time.sleep(3)
 
     def destroy(self):
@@ -132,10 +136,15 @@ class PredictClient:
         for i in range(0, self.retry_count):
             try:
                 domain = self.endpoint.get()
-                url = '%s/api/predict/%s' % (domain, self.service_name)
+                url = u'%s/api/predict/%s' % (domain, self.service_name)
+                req_str = req.to_string()
+                if sys.version_info[0] == 3 and isinstance(req_str, str):
+                    req_body = bytearray(req_str, 'utf-8')
+                else:
+                    req_body = bytearray(req_str)
                 resp = self.connection_pool.request('POST', url,
                                                     headers=headers,
-                                                    body=bytearray(req.to_string()),
+                                                    body=req_body,
                                                     timeout=self.timeout / 1000.0,
                                                     retries=0)
                 if resp.status / 100 == 5:

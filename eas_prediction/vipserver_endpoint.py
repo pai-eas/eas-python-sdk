@@ -6,6 +6,7 @@ from .exception import PredictException
 import urllib3
 import random
 import json
+import re
 
 
 class VipServerEndpoint(Endpoint):
@@ -20,9 +21,10 @@ class VipServerEndpoint(Endpoint):
             resp = self.http.request('GET', vipserver_endpoint)
             if resp.status != 200:
                 raise PredictException(resp.status, resp.data)
-            servers = resp.data
-            server_list = servers.strip().split('\n')
-        except urllib3.exceptions.HTTPError as e:
+            servers = str(resp.data)
+            server_list = re.split('([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)', servers)
+            server_list = [x for x in server_list if re.match('[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+', x) is not None ]
+        except Exception as e:
             raise PredictException(500, str(e))
         return server_list[random.randint(0, len(server_list) - 1)]
 

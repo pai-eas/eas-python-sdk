@@ -39,5 +39,5 @@ class StringResponse(Response):
         self.response_data = '' if response_data is None else response_data
 
     def __str__(self):
-        return self.response_data
+        return str(self.response_data)
 

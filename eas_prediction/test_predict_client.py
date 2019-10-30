@@ -4,6 +4,8 @@
 import unittest
 
 from .predict_client import PredictClient
+from .predict_client import ENDPOINT_TYPE_VIPSERVER
+from .predict_client import ENDPOINT_TYPE_DIRECT
 from .string_request import StringRequest
 from .tf_request import TFRequest
 from .torch_request import TorchRequest
@@ -40,8 +42,8 @@ class PredictClientTestCase(unittest.TestCase):
         ex = None
         try:
             self.client.predict(req)
-        except Exception as ex:
-            pass
+        except Exception as e:
+            ex = e
 
         self.assertEqual(True, isinstance(ex, PredictException))
 
@@ -49,24 +51,14 @@ class PredictClientTestCase(unittest.TestCase):
         req = StringRequest('[{}]')
         response = self.client.predict(req)
 
-    def test_prediction_pytorch(self):
-        client = PredictClient('http://pai-eas-vpc.cn-shanghai.aliyuncs.com', 'pytorch_gpu_wl')
-        # client.set_token('M2FhNjJlZDBmMzBmMzE4NjFiNzZhMmUxY2IxZjkyMDczNzAzYjFiMw==')
-        client.init()
 
-        req = TorchRequest()
-        req.add_feed(0, [1, 3, 224, 224], TFRequest.DT_FLOAT, [1] * 150528)
-        # req.add_fetch(0)
-        import time
-        st = time.time()
-        timer = 0
-        for x in range(0, 10):
-            resp = client.predict(req)
-            timer += (time.time() - st)
-            st = time.time()
-            print(resp.get_tensor_shape(0))
-            # print(resp)
-        print("average response time: %s s" % (timer / 10) )
+    def test_prediction_direct(self):
+        self.client.set_endpoint_type(ENDPOINT_TYPE_DIRECT)
+        self.client.init()
+
+        request = StringRequest('[{}]')
+        response = self.client.predict(request)
+
 
     def test_prediction_tensorflow(self):
         self.client.set_service_name('mnist_saved_model_example')
@@ -76,36 +68,26 @@ class PredictClientTestCase(unittest.TestCase):
         req = TFRequest('predict_images')
         req.add_feed('images', [1, 784], TFRequest.DT_FLOAT, [8] * 784)
         response = self.client.predict(req)
-        print(response)
-        print(response.get_values('scores'))
-        print(response.get_tensor_shape('scores'))
 
-    def test_prediction_tf_benying(self):
-        self.client.set_service_name('mnist_saved_model_example_test')
-        self.client.set_token('N2ExMmM0NjhjNzEyZTU1NDJlNTJkNDQxMzdjNWVmNTEwMzFhZGVjZg==')
-        self.client.init()
 
-        req = TFRequest('serving_default')
-        req.add_feed('sentence1', [200, 15], TFRequest.DT_INT32, [1] * 200 * 15)
-        req.add_feed('sentence2', [200, 15], TFRequest.DT_INT32, [1] * 200 * 15)
-        req.add_feed('y', [200, 2], TFRequest.DT_INT32, [2] * 200 * 2)
-        req.add_feed('keep_rate', [], TFRequest.DT_FLOAT, [0.2])
-        f = open('tf.pb', 'w+')
-        f.write(req.to_string())
-        f.close()
+    def test_prediction_vipserver(self):
+        client = PredictClient('echo.shanghai.eas.vipserver', 'echo')
+        client.set_endpoint_type(ENDPOINT_TYPE_VIPSERVER)
+        client.init()
 
-        response = self.client.predict(req)
-        print(response)
+        request = StringRequest('[{}]')
+        response = self.client.predict(request)
+
 
     def test_vipserver_endpoint(self):
-        from vipserver_endpoint import VipServerEndpoint
-        print(VipServerEndpoint.get_server())
+        from .vipserver_endpoint import VipServerEndpoint
+        ep = VipServerEndpoint('echo.shanghai.eas.vipserver')
 
     def test_vipserver_sync(self):
-        from vipserver_endpoint import VipServerEndpoint
-        endpoint = VipServerEndpoint('conn-test.shanghai.eas.vipserver')
-        print(endpoint.sync())
-        print(endpoint.get())
+        from .vipserver_endpoint import VipServerEndpoint
+        endpoint = VipServerEndpoint('echo.shanghai.eas.vipserver')
+        endpoint.sync()
+        endpoint.get()
 
 
 if __name__ == '__main__':

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from .exception import PredictException
 from .weighted_round_robin import WRRScheduler
 from threading import Lock
 import time
@@ -45,10 +46,15 @@ class Endpoint(object):
         pass
 
     def get(self):
+        retry = 0
         while True:
             if self.scheduler is not None:
                 break
             time.sleep(0.1)
+            retry += 1
+            if retry > 50: # 5s timeout
+                raise PredictException(500, 'Get service backend timeout')
+                break
 
         self.__r_lock_acquire()
         ep = self.scheduler.get_next()[0]
