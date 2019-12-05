@@ -159,4 +159,4 @@ class PredictClient:
             except (MaxRetryError, ProtocolError, HTTPError) as e:
                 if i != self.retry_count - 1:
                     continue
-                raise PredictException(500, e.message)
+                raise PredictException(500, str(e))

@@ -25,7 +25,8 @@ class CacheServerEndpoint(Endpoint):
                 print('sync service endpoints error: %s, %s' % (resp.status, resp.data))
                 return
 
-            result = json.loads(resp.data)
+            resp_data = resp.data.decode('utf-8')
+            result = json.loads(resp_data)
             hosts = result['endpoints']['items']
             for host in hosts:
                 endpoints.append(({
