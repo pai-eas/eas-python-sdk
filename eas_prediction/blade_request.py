@@ -18,19 +18,19 @@ class BladeRequest(Request):
     DT_INT64 = blade_pb2.DT_INT64
     DT_STRING = blade_pb2.DT_STRING
 
-    def __init__(self, tf_signature_name=None):
+    def __init__(self, signature_name=None):
         self.request_data = blade_pb2.Request()
-        self.tf_signature_name = tf_signature_name
+        self.set_signature_name(signature_name)
 
     def __str__(self):
         return self.request_data
 
-    def set_signature_name(self, tf_signature_name):
+    def set_signature_name(self, signature_name):
         """
         Set the signature name of the model
-        :param tf_signature_name: signature name of the model
+        :param signature_name: signature name of the tensorflow model
         """
-        self.tf_signature_name = tf_signature_name
+        self.tf_signature_name = signature_name
         self.request_data.tf_signature_name = self.tf_signature_name
 
     def volume(self, shape):
