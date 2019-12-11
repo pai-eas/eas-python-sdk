@@ -179,7 +179,7 @@ if __name__ == '__main__':
     client = PredictClient('http://pai-eas-vpc.cn-shanghai.aliyuncs.com', 'nlp_model_example')
     client.init()
 
-    req = TFRequest()
+    req = TFRequest(signature_name='predict_words')
 
     req.add_feed('input_data', [1, 360, 128], TFRequest.DT_FLOAT, [0.8] * 85680)
     req.add_feed('input_length', [1], TFRequest.DT_INT32, [187])
