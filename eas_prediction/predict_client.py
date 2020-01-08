@@ -4,6 +4,8 @@
 import threading
 import time
 import sys
+import logging
+import os
 from urllib3 import PoolManager
 from urllib3.exceptions import MaxRetryError
 from urllib3.exceptions import ProtocolError
@@ -35,6 +37,9 @@ class PredictClient:
         self.endpoint_name = endpoint
         self.service_name = service_name
         self.stop = False
+        self.logger = logging.getLogger(endpoint + '/' + service_name)
+        self.logger.addHandler(logging.StreamHandler(stream=sys.stdout))
+        self.logger.setLevel(logging.ERROR)
 
     def __sync_handler(self):
         while True:
@@ -43,7 +48,7 @@ class PredictClient:
             try:
                 self.endpoint.sync()
             except PredictException as e:
-                print(str(e))
+                self.logger.error(str(e))
             time.sleep(3)
 
     def destroy(self):
@@ -57,18 +62,18 @@ class PredictClient:
             self.connection_pool = PoolManager(self.max_connection_count)
 
         if self.endpoint_type == '' or self.endpoint_type == ENDPOINT_TYPE_DEFAULT:
-            self.endpoint = GatewayEndpoint(self.endpoint_name)
+            self.endpoint = GatewayEndpoint(self.endpoint_name, self.service_name, self.logger)
         elif self.endpoint_type == ENDPOINT_TYPE_VIPSERVER:
-            self.endpoint = VipServerEndpoint(self.endpoint_name)
+            self.endpoint = VipServerEndpoint(self.endpoint_name, self.logger)
         elif self.endpoint_type == ENDPOINT_TYPE_DIRECT:
-            self.endpoint = CacheServerEndpoint(self.endpoint_name, self.service_name)
+            self.endpoint = CacheServerEndpoint(self.endpoint_name, self.service_name, self.logger)
         else:
             raise PredictException(500, 'Unsupported endpoint type: %s' % self.endpoint_type)
 
         t = threading.Thread(target=PredictClient.__sync_handler, args=(self,))
         t.daemon = True
         t.start()
-        # print('Endpoint sync thread started')
+        self.logger.debug('Endpoint sync thread started')
 
     def set_endpoint(self, endpoint):
         """
@@ -97,6 +102,13 @@ class PredictClient:
         :param token: service token, automatically generated when deploying the service
         """
         self.token = token
+
+    def set_log_level(self, log_level):
+        """
+        Set log level for logging module
+        :param log_level: target log level
+        """
+        self.logger.setLevel(log_level)
 
     def set_retry_count(self, count):
         """
@@ -137,6 +149,7 @@ class PredictClient:
             try:
                 domain = self.endpoint.get()
                 url = u'%s/api/predict/%s' % (domain, self.service_name)
+                self.logger.debug('Request to url: %s' % url)
                 req_str = req.to_string()
                 if sys.version_info[0] == 3 and isinstance(req_str, str):
                     req_body = bytearray(req_str, 'utf-8')
@@ -157,6 +170,7 @@ class PredictClient:
 
                 return req.parse_response(resp.data)
             except (MaxRetryError, ProtocolError, HTTPError) as e:
+                self.logger.debug('Request failed, err: %s, retrying', str(e))
                 if i != self.retry_count - 1:
                     continue
-                raise PredictException(500, str(e))
+                raise PredictException(500, 'url: %s, error: %s' % (url, str(e)))

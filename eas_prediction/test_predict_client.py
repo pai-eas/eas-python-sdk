@@ -11,6 +11,11 @@ from .tf_request import TFRequest
 from .torch_request import TorchRequest
 from .exception import PredictException
 
+import os
+import logging
+logging.basicConfig(level = logging.ERROR,format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
 
 class PredictClientTestCase(unittest.TestCase):
 
@@ -47,17 +52,35 @@ class PredictClientTestCase(unittest.TestCase):
 
         self.assertEqual(True, isinstance(ex, PredictException))
 
+    def test_prediction_gateway_no_endpoint(self):
+        ex = None
+        try:
+            client = PredictClient('', 'echo_vipserver')
+            client.init()
+        except Exception as e:
+            ex = e
+
+        self.assertEqual(True, isinstance(ex, PredictException))
+
+    def test_prediction_gateway_endpoint(self):
+        os.environ['NAMESPACE'] = 'echo-test'
+        client = PredictClient('', 'echo_test')
+        client.init()
+        endpoint = client.endpoint.get()
+        self.assertEqual('http://echo-test.echo-test:8080', endpoint)
+        del os.environ['NAMESPACE']
+
     def test_prediction_bad_endpoint(self):
         req = StringRequest('[{}]')
         response = self.client.predict(req)
 
 
-    def test_prediction_direct(self):
-        self.client.set_endpoint_type(ENDPOINT_TYPE_DIRECT)
-        self.client.init()
-
-        request = StringRequest('[{}]')
-        response = self.client.predict(request)
+#    def test_prediction_direct(self):
+#        self.client.set_endpoint_type(ENDPOINT_TYPE_DIRECT)
+#        self.client.init()
+#
+#        request = StringRequest('[{}]')
+#        response = self.client.predict(request)
 
 
     def test_prediction_tensorflow(self):
@@ -71,8 +94,9 @@ class PredictClientTestCase(unittest.TestCase):
 
 
     def test_prediction_vipserver(self):
-        client = PredictClient('echo.shanghai.eas.vipserver', 'echo')
+        client = PredictClient('echo-vipserver.shanghai.eas.vipserver', 'echo_vipserver')
         client.set_endpoint_type(ENDPOINT_TYPE_VIPSERVER)
+        client.set_token('MDAwZDQ3NjE3OThhOTI4ODFmMjJiYzE0MDk1NWRkOGI1MmVhMGI0Yw==')
         client.init()
 
         request = StringRequest('[{}]')
@@ -81,11 +105,11 @@ class PredictClientTestCase(unittest.TestCase):
 
     def test_vipserver_endpoint(self):
         from .vipserver_endpoint import VipServerEndpoint
-        ep = VipServerEndpoint('echo.shanghai.eas.vipserver')
+        ep = VipServerEndpoint('echo-vipserver.shanghai.eas.vipserver', logger)
 
     def test_vipserver_sync(self):
         from .vipserver_endpoint import VipServerEndpoint
-        endpoint = VipServerEndpoint('echo.shanghai.eas.vipserver')
+        endpoint = VipServerEndpoint('echo-vipserver.shanghai.eas.vipserver', logger)
         endpoint.sync()
         endpoint.get()
 

@@ -22,6 +22,8 @@ class WRRScheduler:
 
     def _init_dataset(self, s):
         self.data_set = s
+        if s is None or len(s) == 0:
+            return
         self.max_s = max(s, key=lambda x: x[1])[1]
         if sys.version_info[0] < 3:
             self.gcd_s = functools.reduce(fractions.gcd, [weight for data, weight in s])
@@ -30,6 +32,8 @@ class WRRScheduler:
         self.len_s = len(s)
 
     def schedule(self):
+        if self.data_set is None or len(self.data_set) == 0:
+            return None
         while True:
             self.i = (self.i + 1) % self.len_s
             if self.i == 0:

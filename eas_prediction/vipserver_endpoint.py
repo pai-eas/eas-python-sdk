@@ -10,10 +10,11 @@ import re
 
 
 class VipServerEndpoint(Endpoint):
-    def __init__(self, domain):
-        super(VipServerEndpoint, self).__init__()
+    def __init__(self, domain, logger):
+        super(VipServerEndpoint, self).__init__(logger)
         self.domain = domain
         self.http = urllib3.PoolManager()
+        self.logger = logger
 
     def get_server(self):
         vipserver_endpoint = 'http://jmenv.tbsite.net:8080/vipserver/serverlist'
@@ -35,7 +36,7 @@ class VipServerEndpoint(Endpoint):
         try:
             resp = self.http.request('GET', url)
             if resp.status != 200:
-                print('sync service endpoints error: %s, %s' % (resp.status, resp.data))
+                self.logger.error('sync service endpoints error: %s, %s' % (resp.status, resp.data))
                 return
 
             result = json.loads(resp.data)
@@ -46,8 +47,9 @@ class VipServerEndpoint(Endpoint):
                         'ip': host['ip'],
                         'port': host['port'],
                     }, host['weight']))
+            self.logger.debug(endpoints)
             self.set_endpoints(endpoints)
         except urllib3.exceptions.HTTPError as e:
-            print('sync service endpoints http error, [%s]: %s' % (url, str(e)))
+            self.logger.error('sync service endpoints http error, [%s]: %s' % (url, str(e)))
         except Exception as e:
-            print('sync service endpoints unknown error, [%s]: %s' % (url, str(e)))
+            self.logger.error('sync service endpoints unknown error, [%s]: %s' % (url, str(e)))

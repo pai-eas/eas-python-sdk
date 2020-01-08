@@ -12,3 +12,4 @@ from .string_request import StringResponse
 from .predict_client import ENDPOINT_TYPE_DIRECT
 from .predict_client import ENDPOINT_TYPE_VIPSERVER
 from .predict_client import ENDPOINT_TYPE_DEFAULT
+

@@ -17,6 +17,13 @@ class TFRequest(Request):
     DT_INT16 = tf_pb.DT_INT16
     DT_INT32 = tf_pb.DT_INT32
     DT_INT64 = tf_pb.DT_INT64
+    DT_UINT8 = tf_pb.DT_UINT8
+    DT_UINT16 = tf_pb.DT_UINT16
+    DT_QINT8 = tf_pb.DT_QINT8
+    DT_QUINT8 = tf_pb.DT_QUINT8
+    DT_QINT16 = tf_pb.DT_QINT16
+    DT_QUINT16 = tf_pb.DT_QUINT16
+    DT_QINT32 = tf_pb.DT_QINT32
     DT_STRING = tf_pb.DT_STRING
     DT_BOOL = tf_pb.DT_BOOL
 
@@ -46,12 +53,23 @@ class TFRequest(Request):
         self.request_data.signature_name = self.signature_name
         self.request_data.inputs[input_name].dtype = content_type
         self.request_data.inputs[input_name].array_shape.dim.extend(shape)
+        integer_types = [
+            tf_pb.DT_INT8,
+            tf_pb.DT_INT16,
+            tf_pb.DT_INT32 ,
+            tf_pb.DT_UINT8 ,
+            tf_pb.DT_UINT16,
+            tf_pb.DT_QINT8,
+            tf_pb.DT_QINT16,
+            tf_pb.DT_QINT32,
+            tf_pb.DT_QUINT8,
+            tf_pb.DT_QUINT16,
+        ]
         if content_type == tf_pb.DT_FLOAT:
             self.request_data.inputs[input_name].float_val.extend(content)
         elif content_type == tf_pb.DT_DOUBLE:
             self.request_data.inputs[input_name].double_val.extend(content)
-        elif content_type == tf_pb.DT_INT8 or content_type == tf_pb.DT_INT16 or \
-                content_type == tf_pb.DT_INT32:
+        elif content_type in integer_types:
             self.request_data.inputs[input_name].int_val.extend(content)
         elif content_type == tf_pb.DT_INT64:
             self.request_data.inputs[input_name].int64_val.extend(content)
