@@ -117,7 +117,7 @@ if __name__ == '__main__':
     client.init()
 
     req = TorchRequest()
-    req.add_feed(0, [1, 3, 224, 224], TFRequest.DT_FLOAT, [1] * 150528)
+    req.add_feed(0, [1, 3, 224, 224], TorchRequest.DT_FLOAT, [1] * 150528)
     # req.add_fetch(0)
     import time
     st = time.time()

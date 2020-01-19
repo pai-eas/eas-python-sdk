@@ -5,6 +5,8 @@ from .exception import PredictException
 from .predict_client import PredictClient
 from .tf_request import TFRequest
 from .tf_request import TFResponse
+from .torch_request import TorchRequest
+from .torch_request import TorchResponse
 from .blade_request import BladeRequest
 from .blade_request import BladeResponse 
 from .string_request import StringRequest
