@@ -39,7 +39,10 @@ class VipServerEndpoint(Endpoint):
                 self.logger.error('sync service endpoints error: %s, %s' % (resp.status, resp.data))
                 return
 
-            result = json.loads(resp.data)
+            if isinstance(resp.data, bytes):
+                result = json.loads(resp.data.decode('utf-8'))
+            else:
+                result = json.loads(resp.data)
             hosts = result['hosts']
             for host in hosts:
                 if host['valid']:
