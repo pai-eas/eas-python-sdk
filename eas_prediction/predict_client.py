@@ -5,7 +5,10 @@ import threading
 import time
 import sys
 import logging
-import os
+import datetime
+import hashlib
+import hmac
+import base64
 from urllib3 import PoolManager
 from urllib3.exceptions import MaxRetryError
 from urllib3.exceptions import ProtocolError
@@ -132,6 +135,29 @@ class PredictClient:
         """
         self.timeout = timeout
 
+    def generate_singaure(self, request_data):
+        canonicalized_resource = '/api/predict/%s' % self.service_name
+
+        content_md5 = hashlib.md5(request_data).hexdigest()
+        content_type = 'application/octet-stream'
+        utcnow = datetime.datetime.now()
+        current_time = utcnow.strftime('%a, %d %b %Y %H:%M:%S GMT')
+        verb = 'POST'
+
+        auth = '%s\n%s\n%s\n%s\n%s' % (verb, content_md5, content_type, current_time, canonicalized_resource)
+
+        hmac1 = hmac.new(bytearray(self.token, 'utf-8'), bytearray(auth.strip(), 'utf-8'), hashlib.sha1)
+        signature = base64.b64encode(hmac1.digest()).decode()
+        authorization = 'EAS %s' % (signature.strip())
+
+        return {
+            'Content-MD5': content_md5,
+            'Date': current_time,
+            'Content-Type': content_type,
+            'Content-Length': '%d' % len(request_data),
+            'Authorization': authorization
+        }
+
     def predict(self, req):
         """
         Perform the prediction request to the server by sending an http request of which the request body
@@ -141,10 +167,6 @@ class PredictClient:
         :return: service response correlated with the input request
         """
         headers = None
-        if len(self.token) > 0:
-            headers = {
-                'Authorization': self.token
-            }
         for i in range(0, self.retry_count):
             try:
                 domain = self.endpoint.get()
@@ -155,6 +177,8 @@ class PredictClient:
                     req_body = bytearray(req_str, 'utf-8')
                 else:
                     req_body = bytearray(req_str)
+                if len(self.token) > 0:
+                    headers = self.generate_singaure(req_body)
                 resp = self.connection_pool.request('POST', url,
                                                     headers=headers,
                                                     body=req_body,

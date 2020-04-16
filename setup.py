@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='eas-prediction',
-    version='0.10',
+    version='0.13',
     description='Python client sdk for eas inference service',
     url='http://gitlab.alibaba-inc.com/eas/eas-python-sdk',
     packages=['eas_prediction'],

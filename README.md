@@ -44,8 +44,8 @@ from eas_prediction import PredictClient
 from eas_prediction import StringRequest
 
 if __name__ == '__main__':
-    client = PredictClient('http://pai-eas-vpc.cn-shanghai.aliyuncs.com', 'scorecard_pmml_example')
-    client.set_token('NjEyY2EwZTY0OWUyOWY3ZDAzNDU2ZWMwOGFlZjA3YjUwMjA0MzViNw==')
+    client = PredictClient('http://1828488879222746.cn-shanghai.pai-eas.aliyuncs.com', 'scorecard_pmml_example')
+    client.set_token('YWFlMDYyZDNmNTc3M2I3MzMwYmY0MmYwM2Y2MTYxMTY4NzBkNzdjOQ==')
     client.init()
 
     request = StringRequest('[{"fea1": 1, "fea2": 2}]')
@@ -65,8 +65,8 @@ from eas_prediction import StringRequest
 from eas_prediction import TFRequest
 
 if __name__ == '__main__':
-    client = PredictClient('http://pai-eas-vpc.cn-shanghai.aliyuncs.com', 'mnist_saved_model_example')
-    #client.set_token('M2FhNjJlZDBmMzBmMzE4NjFiNzZhMmUxY2IxZjkyMDczNzAzYjFiMw==')
+    client = PredictClient('http://1828488879222746.cn-shanghai.pai-eas.aliyuncs.com', 'mnist_saved_model_example')
+    client.set_token('YTg2ZjE0ZjM4ZmE3OTc0NzYxZDMyNmYzMTJjZTQ1YmU0N2FjMTAyMA==')
     client.init()
 
     #request = StringRequest('[{}]')
@@ -90,7 +90,7 @@ from eas_prediction import TFRequest
 from eas_prediction import ENDPOINT_TYPE_DIRECT
 
 if __name__ == '__main__':
-    client = PredictClient('pai-eas-vpc.cn-hangzhou.aliyuncs.com', 'mnist_saved_model_example')
+    client = PredictClient('http://pai-eas-vpc.cn-hangzhou.aliyuncs.com', 'mnist_saved_model_example')
     client.set_token('M2FhNjJlZDBmMzBmMzE4NjFiNzZhMmUxY2IxZjkyMDczNzAzYjFiMw==')
     client.set_endpoint_type(ENDPOINT_TYPE_DIRECT)
     client.init()
@@ -113,7 +113,7 @@ from eas_prediction import PredictClient
 from eas_prediction import TorchRequest
 
 if __name__ == '__main__':
-    client = PredictClient('http://pai-eas-vpc.cn-shanghai.aliyuncs.com', 'pytorch_gpu_wl')
+    client = PredictClient('http://1828488879222746.cn-shanghai.pai-eas.aliyuncs.com', 'pytorch_gpu_wl')
     client.init()
 
     req = TorchRequest()
@@ -142,7 +142,7 @@ from eas_prediction import PredictClient
 from eas_prediction import BladeRequest 
 
 if __name__ == '__main__':
-    client = PredictClient('http://pai-eas-vpc.cn-shanghai.aliyuncs.com', 'nlp_model_example')
+    client = PredictClient('http://1828488879222746.cn-shanghai.pai-eas.aliyuncs.com', 'nlp_model_example')
     client.init()
 
     req = BladeRequest()
@@ -176,7 +176,7 @@ from eas_prediction import PredictClient
 from eas_prediction.blade_tf_request import TFRequest # Need Importing blade TFRequest 
 
 if __name__ == '__main__':
-    client = PredictClient('http://pai-eas-vpc.cn-shanghai.aliyuncs.com', 'nlp_model_example')
+    client = PredictClient('http://1828488879222746.cn-shanghai.pai-eas.aliyuncs.com', 'nlp_model_example')
     client.init()
 
     req = TFRequest(signature_name='predict_words')
