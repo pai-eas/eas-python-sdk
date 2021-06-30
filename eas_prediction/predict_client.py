@@ -62,7 +62,7 @@ class PredictClient:
         Initialize the client after the functions used to set the client properties are called
         """
         if self.connection_pool is None:
-            self.connection_pool = PoolManager(self.max_connection_count)
+            self.connection_pool = PoolManager(maxsize=self.max_connection_count)
 
         if self.endpoint_type == '' or self.endpoint_type == ENDPOINT_TYPE_DEFAULT:
             self.endpoint = GatewayEndpoint(self.endpoint_name, self.service_name, self.logger)
