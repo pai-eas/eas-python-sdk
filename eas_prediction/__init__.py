@@ -3,6 +3,7 @@
 
 from .exception import PredictException
 from .predict_client import PredictClient
+from .odl_predict_client import OdlPredictClient
 from .tf_request import TFRequest
 from .tf_request import TFResponse
 from .torch_request import TorchRequest
