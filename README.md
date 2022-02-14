@@ -31,6 +31,13 @@ pip install -U eas-prediction --user
 ||to_string()|将TorchRequest中所构建的用于请求传输的protobuf对象序列化成string|
 |TorchResponse|get_tensor_shape(output_index)|获得下标index的输出Tensor的TensorShape|
 ||get_values(output_index)|获取输出的tensor的数据向量，输出结果以一维数组的形式保存，可配套使用get_tensor_shape()获取对应的tensor的shape，将其还原成所需的多维tensor，输出会根据output的类型不同，返回不同类型的结果数组|
+|OnnxRequest|OnnxRequest()|OnnxRequest类构建方法|
+||add_tensor(OnnxData.TensorProto)|请求HIE的在线模型预测服务时，设置需要输入的Tensor，为OnnxData.TensorProto格式；若这个Tensor的name之前已经add过，则之前add的会被新的覆盖|
+|OnnxResponse|get_size()|获取输出的tensor的数量|
+||get_name(output_index)|获取下标index的输出的Tensor的name|
+||get_tensor(output_index)|获取下标index的输出的tensor，为OnnxData.TensorProto格式|
+|OnnxDataHelper|to_array(OnnxData.TensorProto)|将OnnxData.TensorProto转成numpy array|
+||from_array(numpy.array)|将numpy array转成OnnxData.TensorProto|
 
 
 # 程序示例
@@ -195,5 +202,39 @@ if __name__ == '__main__':
         # print(resp)
         # print(resp.get_values('output'))
         print(resp.get_tensor_shape('output'))
+    print("average response time: %s s" % (timer / 10) )
+```
+
+
+## OnnxProcessor输入输出程序示例
+OnnxProcessor用户可以使用OnnxRequest与OnnxResponse作为数据的输入输出格式，具体demo示例如下：
+
+```python
+from eas_prediction import PredictClient
+from eas_prediction import OnnxRequest, OnnxDataHelper
+import numpy as np
+
+if __name__ == '__main__':
+    endpoint = 'http://localhost:6016'
+    inputs = np.load('0_inputs.npz') # inputs
+
+    client = PredictClient(endpoint, 'hie_eas_processor_bert')
+    # client.set_token('YWFlMDYyZDNmNTc3M2I3MzMwYmY0MmYwM2Y2MTYxMTY4NzBkNzdjOQ==')
+    client.init()
+
+    req = OnnxRequest()
+    for name, arr in inputs.items():
+        req.add_tensor(OnnxDataHelper.from_array(arr, name))
+    import time
+    st = time.time()
+    timer = 0
+    for x in range(0, 10):
+        resp = client.predict(req)
+        timer += (time.time() - st)
+        st = time.time()
+        for i in range(resp.get_size()):
+            name = resp.get_name(i)
+            arr = OnnxDataHelper.to_array(resp.get_tensor(i))
+            print("{}: output: {}, shape: {}".format(x, name, arr.shape))
     print("average response time: %s s" % (timer / 10) )
 ```
