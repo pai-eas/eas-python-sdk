@@ -48,7 +48,6 @@ class DataFrameList:
         for i in range(len(dataframe_list.index)):
             df = dataframe_list.index[i]
             self.dataframe_list.append(DataFrame(df))
-            # self.dataframe_list.append(df)
 
     def __getitem__(self, item):
         return self.dataframe_list[item]
@@ -265,7 +264,6 @@ class AsyncClient(PredictClient):
         return dfl
 
     def watch_reader(self, resp):
-        # TODO(lingcai.wl): maybe we need a lambda function defined by user
         """
         read data from a watch request connection and decode into dataframe
 
@@ -277,21 +275,18 @@ class AsyncClient(PredictClient):
         read_length = 4
         read_raw = False
         # TODO(lingcai.wl): Is there any better solution than this?
-        while not resp.isclosed():
-            # print('read_length', read_length) # just check
+        while not resp.isclosed() and not self.stop:
             # TODO(lingcai.wl): how to close the conn
             chunk = resp.read(read_length)
             if not read_raw:
-                content_length = int.from_bytes(chunk, 'big')
-                read_length = content_length - (len(chunk) - 4)
+                read_length = int.from_bytes(chunk, 'big')
                 read_raw = True
             else:
                 df = DataFrameCodec.decode(chunk)
-                print(df)
+                yield df
                 read_raw = False
                 read_length = 4
 
-        # TODO(lingcai.wl): not sure about what's next
         resp.release_conn()
 
     def watch(self, index: int, window: int, index_only=False, auto_commit=False):
@@ -334,9 +329,7 @@ class AsyncClient(PredictClient):
             if resp.status != 200:
                 raise PredictException(resp.status, resp.data)
             print(resp.headers)
-            self.watch_reader(resp)
-
-        #     TODO(lingcai.wl): not sure about what's next
+            return self.watch_reader(resp)
 
         except (MaxRetryError, ProtocolError, HTTPError) as e:
             self.logger.debug('Request failed, err: %s', str(e))

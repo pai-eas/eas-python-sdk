@@ -38,12 +38,11 @@ class AsyncClientTestCase(unittest.TestCase):
         print(client.put("test2", {}))
 
     def test_async_watch(self):
-        dd = DataFrameProto()
-        # dd.ParseFromString(b'\x00\x00\x00F\x08\x80\x80\x80\xda\xd6\xf1\xfa\x8d`\x121\n\trequestId\x12$8b488f6c-64c9-4a28-a128-59769609bf3b\x1a\x077 hello')
-        # print(dd)
         client = AsyncClient('11.160.138.124:3031', '')
         client.init("bar", "test-group2")
-        print(client.watch(0, 5))
+        for df in client.watch(0, 5):
+            print(df)
+            # client.commit([df.index])
 
     def test_async_delete(self):
         client = AsyncClient('11.160.138.124:3031', '')
