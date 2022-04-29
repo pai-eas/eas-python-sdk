@@ -5,7 +5,6 @@ import logging
 import unittest
 
 from .async_client import AsyncClient
-from .async_client import DataFrameProto
 
 logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -20,12 +19,7 @@ class AsyncClientTestCase(unittest.TestCase):
     def test_async_get(self):
         client = AsyncClient('11.160.138.124:3031', '')
         client.init("test", "test-group")
-        raw = client.get(6925387844634542080, 1)[0].raw_data.SerializeToString()
-        dd = DataFrameProto()
-        print(raw)
-        dd.ParseFromString(raw)
-        print(dd)
-        print('dd')
+        print(client.get(6925387844634542080, 5))
 
     def test_async_commit(self):
         client = AsyncClient('11.160.138.124:3031', '')
@@ -48,6 +42,11 @@ class AsyncClientTestCase(unittest.TestCase):
         client = AsyncClient('11.160.138.124:3031', '')
         client.init("test", "test-group")
         print(client.delete([6925387844634542080]))
+
+    def test_async_truncate(self):
+        client = AsyncClient('11.160.138.124:3031', '')
+        client.init("test", "test-group")
+        print(client.truncate([6925387844634542080]))
 
 
 if __name__ == '__main__':

@@ -49,11 +49,11 @@ class DataFrameList:
             df = dataframe_list.index[i]
             self.dataframe_list.append(DataFrame(df))
 
-    def __getitem__(self, item):
-        return self.dataframe_list[item]
-
     def get_list(self):
         return self.dataframe_list
+
+    def __getitem__(self, item):
+        return self.dataframe_list[item]
 
     def __str__(self):
         return self.raw_data.__str__()
@@ -85,7 +85,7 @@ class DataFrameCodec:
 
 
 class DataFrameListCodec:
-    # TODO(lingcai.wl): support flatbuffer
+    # TODO(lingcai.wl): support flatbuffer (maybe not necessary)
     def __init__(self, type="protobuffer"):
         self.type = type
         self.request_data = DataFrameListProto()
@@ -210,7 +210,7 @@ class AsyncClient(PredictClient):
 
         headers = {'Authorization': self.token}
         headers = self.with_identity(headers)
-        self.do_request(url, "DELETE", headers)
+        return self.do_request(url, "DELETE", headers).data
 
     def put(self, data, tags: dict):
         """
@@ -352,7 +352,7 @@ class AsyncClient(PredictClient):
             url = url + '?' + query_str
         headers = {'Authorization': self.token}
         headers = self.with_identity(headers)
-        return self.do_request(url, method, headers)
+        return self.do_request(url, method, headers).data
 
     def commit(self, indexes):
         """
@@ -362,7 +362,7 @@ class AsyncClient(PredictClient):
         :return:
         :rtype:
         """
-        return self.deal_with_indexes(indexes, "PUT")
+        return self.deal_with_indexes(indexes, "PUT").data
 
     def delete(self, indexes):
         """
@@ -372,4 +372,4 @@ class AsyncClient(PredictClient):
         :return:
         :rtype:
         """
-        return self.deal_with_indexes(indexes, "DELETE")
+        return self.deal_with_indexes(indexes, "DELETE").data
