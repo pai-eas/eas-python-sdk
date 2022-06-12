@@ -196,7 +196,6 @@ class AsyncClient(PredictClient):
         if query_str != '':
             url = url + '?' + query_str
 
-        # headers = {"Accept": "application/x-flatbuffers"}  # TODO(lingcai.wl): protobuf option
         headers = {'Authorization': self.token}
         headers = self.with_identity(headers)
         self.do_request(url, "POST", headers)
@@ -258,6 +257,7 @@ class AsyncClient(PredictClient):
 
         headers = {'Authorization': self.token}
         headers = self.with_identity(headers)
+        headers['Accept'] = 'application/vnd.google.protobuf'  # default
 
         raw_resp = self.do_request(url, "GET", headers)
         dfl = DataFrameListCodec.decode(raw_resp.data)
@@ -318,7 +318,7 @@ class AsyncClient(PredictClient):
 
         headers = {'Authorization': self.token}
         headers = self.with_identity(headers)
-        headers['Accept'] = 'application/vnd.google.protobuf'
+        headers['Accept'] = 'application/vnd.google.protobuf'  # default
 
         try:
             resp = self.connection_pool.request("GET", url,
@@ -328,7 +328,6 @@ class AsyncClient(PredictClient):
 
             if resp.status != 200:
                 raise PredictException(resp.status, resp.data)
-            print(resp.headers)
             return self.watch_reader(resp)
 
         except (MaxRetryError, ProtocolError, HTTPError) as e:
@@ -362,7 +361,7 @@ class AsyncClient(PredictClient):
         :return:
         :rtype:
         """
-        return self.deal_with_indexes(indexes, "PUT").data
+        return self.deal_with_indexes(indexes, "PUT")
 
     def delete(self, indexes):
         """
