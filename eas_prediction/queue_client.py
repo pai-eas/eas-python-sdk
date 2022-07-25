@@ -256,7 +256,7 @@ class QueueClient(PredictClient):
         request_id = resp.headers[HeaderRequestId]
         return resp.data.decode('utf-8'), request_id
 
-    def info(self):
+    def attributes(self):
         """
         get the attributes of a queue service
         """

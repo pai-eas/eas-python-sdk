@@ -43,13 +43,13 @@ class QueueClientTestCase(unittest.TestCase):
         self.sink_queue = sink_queue
 
     def truncate(self):
-        info = self.input_queue.info()
-        if 'stream.lastEntry' in info:
-            self.input_queue.truncate(int(info['stream.lastEntry']) + 1)
+        attributes = self.input_queue.attributes()
+        if 'stream.lastEntry' in attributes:
+            self.input_queue.truncate(int(attributes['stream.lastEntry']) + 1)
 
-        info = self.sink_queue.info()
-        if 'stream.lastEntry' in info:
-            self.sink_queue.truncate(int(info['stream.lastEntry']) + 1)
+        attributes = self.sink_queue.attributes()
+        if 'stream.lastEntry' in attributes:
+            self.sink_queue.truncate(int(attributes['stream.lastEntry']) + 1)
 
     def test_queue_get_by_request_id(self):
         self.truncate()
@@ -73,14 +73,14 @@ class QueueClientTestCase(unittest.TestCase):
             index, request_id = self.sink_queue.put('abc')
             latest_index = index
 
-        info = self.sink_queue.info()
-        self.assertTrue(int(info['stream.length']) > 1)
+        attributes = self.sink_queue.attributes()
+        self.assertTrue(int(attributes['stream.length']) > 1)
 
         self.sink_queue.truncate(int(latest_index) + 1)
 
-        info = self.sink_queue.info()
+        attributes = self.sink_queue.attributes()
 
-        self.assertEqual(int(info['stream.length']), 0)
+        self.assertEqual(int(attributes['stream.length']), 0)
 
     def test_watch_with_auto_commit(self):
 
@@ -96,20 +96,20 @@ class QueueClientTestCase(unittest.TestCase):
                 break
 
         watcher.close()
-        info = self.sink_queue.info()
+        attributes = self.sink_queue.attributes()
 
         time.sleep(1)
 
-        info = self.sink_queue.info()
+        attributes = self.sink_queue.attributes()
 
-        self.assertEqual(int(info['stream.length']), 0)
+        self.assertEqual(int(attributes['stream.length']), 0)
 
     def test_watch_with_manual_commit(self):
 
         for x in range(10):
             index, request_id = self.sink_queue.put(str(x))
 
-        info = self.sink_queue.info()
+        attributes = self.sink_queue.attributes()
 
         i = 0
         watcher = self.sink_queue.watch(0, 5, auto_commit=False)
@@ -122,9 +122,9 @@ class QueueClientTestCase(unittest.TestCase):
 
         watcher.close()
 
-        info = self.sink_queue.info()
+        attributes = self.sink_queue.attributes()
 
-        self.assertEqual(int(info['stream.length']), 0)
+        self.assertEqual(int(attributes['stream.length']), 0)
 
     def test_watch_with_inference_service_sync(self):
         self.truncate()
@@ -132,7 +132,7 @@ class QueueClientTestCase(unittest.TestCase):
         for x in range(100):
             index, request_id = self.input_queue.put('[{}]')
 
-        info = self.input_queue.info()
+        attributes = self.input_queue.attributes()
 
         i = 0
         watcher = self.sink_queue.watch(0, 5, auto_commit=False)
@@ -146,9 +146,9 @@ class QueueClientTestCase(unittest.TestCase):
 
         watcher.close()
 
-        info = self.sink_queue.info()
+        attributes = self.sink_queue.attributes()
 
-        self.assertEqual(int(info['stream.length']), 0)
+        self.assertEqual(int(attributes['stream.length']), 0)
 
     def test_watch_with_inference_service_async(self):
         self.truncate()
