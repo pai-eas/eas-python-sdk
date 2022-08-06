@@ -150,15 +150,51 @@ class QueueClientTestCase(unittest.TestCase):
 
         self.assertEqual(int(attributes['stream.length']), 0)
 
-    def test_watch_with_inference_service_async(self):
+    def test_watch_async(self):
         self.truncate()
 
-        count = 1000
+        count = 2000
 
         send_items = set()
         recv_items = set()
 
         def send_thread():
+            self.sink_queue.set_timeout(30000)
+            for x in range(count):
+                index, request_id = self.sink_queue.put('[{}]')
+                send_items.add(request_id)
+
+        def watch_thread():
+            watcher = self.sink_queue.watch(0, 5, auto_commit=True)
+            i = 0
+            for x in watcher.run():
+                recv_items.add(x.tags['requestId'])
+                i += 1
+                if i == count:
+                    break
+            watcher.close()
+
+        thread1 = threading.Thread(target=watch_thread)
+        thread2 = threading.Thread(target=send_thread)
+
+        thread1.start()
+        thread2.start()
+
+        thread1.join()
+        thread2.join()
+
+        self.assertEqual(send_items, recv_items)
+
+    def test_watch_with_inference_service_async(self):
+        self.truncate()
+
+        count = 2000
+
+        send_items = set()
+        recv_items = set()
+
+        def send_thread():
+            self.input_queue.set_timeout(30000)
             for x in range(count):
                 index, request_id = self.input_queue.put('[{}]')
                 send_items.add(request_id)

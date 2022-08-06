@@ -4,8 +4,10 @@
 import urllib.parse
 import uuid
 import json
+import logging
 import threading
 import websocket
+import time
 
 from urllib3.exceptions import HTTPError
 from urllib3.exceptions import MaxRetryError
@@ -114,24 +116,26 @@ class DataFrameListCodec:
 
 
 class Watcher:
-    def __init__(self, queue, url, headers):
+    def __init__(self, queue, url, headers, logger):
         self.queue = queue
         self.event = threading.Event()
         self.url = url
         self.headers = headers
+        self.logger = logger
+        self.closed = False
 
     def _ping(self):
         while not self.event.wait(2):
             with self.queue.watch_lock:
-                if self.queue.watch_sock:
+                if not self.closed:
                     try:
                         self.queue.watch_sock.ping("ping")
                     except Exception as ex:
-                        self.logger.warning(
-                            "send_ping routine terminated: {}".format(ex))
-                        break
+                        self.logger and self.logger.warning(
+                            "send_ping error ({})".format(ex))
                 else:
-                    self.logger.info("send_ping routine exited")
+                    self.logger and self.logger.debug(
+                        "send_ping routine exited")
                     break
 
     def run(self):
@@ -145,15 +149,30 @@ class Watcher:
         thread = threading.Thread(target=self._ping)
         thread.daemon = True
         thread.start()
+
         while True:
-            df = self.queue.watch_sock.recv()
-            yield DataFrameCodec.decode(df)
+            try:
+                df = self.queue.watch_sock.recv()
+                yield DataFrameCodec.decode(df)
+            except Exception as ex:
+                self.logger and self.logger.warning(
+                    "connection closed (%s), try to reconnect" % str(ex))
+                while True:
+                    try:
+                        self.queue.watch_sock = websocket.create_connection(
+                            self.url, header=self.headers)
+                        break
+                    except Exception as e:
+                        time.sleep(1)
+                        self.logger and self.logger.warning(
+                            "reconnect failed (%s), retrying..." % str(e))
 
     def close(self):
         with self.queue.watch_lock:
             self.event.set()
             self.queue.watch_sock.abort()
             self.queue.watch_sock = None
+            self.closed = True
 
 
 class QueueClient(PredictClient):
@@ -175,6 +194,11 @@ class QueueClient(PredictClient):
         self.gid = gid
         self.watch_sock = None
         self.watch_lock = threading.Lock()
+        self.logger = logging.getLogger(__name__)
+        self.logger.setLevel(logging.INFO)
+
+    def set_logger(logger=None):
+        self.logger = logger
 
     def _with_identity(self, headers=None):
         """
@@ -218,19 +242,25 @@ class QueueClient(PredictClient):
         common code for a http request
         """
         try:
-            resp = self.connection_pool.request(method, url,
-                                                headers=headers,
-                                                body=body,
-                                                timeout=self.timeout / 1000.0,
-                                                retries=self.retry_count)
+            for i in range(self.retry_count + 1):
+                resp = self.connection_pool.request(method, url,
+                                                    headers=headers,
+                                                    body=body,
+                                                    timeout=self.timeout / 1000.0,
+                                                    retries=self.retry_count)
 
-            if int(resp.status / 100) != 2:
-                raise PredictException(resp.status, resp.data)
-            return resp
+                # retry for non-200
+                if int(resp.status / 100) != 2:
+                    continue
+
+                return resp
+
+            raise PredictException(resp.status, resp.data)
 
         except (MaxRetryError, ProtocolError, HTTPError) as e:
-            self.logger.debug('Request failed, err: %s', str(e))
-            raise PredictException('url: %s, error: %s' % (url, str(e)))
+            self.logger and self.logger.debug(
+                'Request failed, err: %s', str(e))
+            raise PredictException(502, 'url: %s, error: %s' % (url, str(e)))
 
     def truncate(self, index):
         """
@@ -318,7 +348,7 @@ class QueueClient(PredictClient):
         headers['Accept'] = 'application/vnd.google.protobuf'  # default
 
         try:
-            return Watcher(self, url, headers)
+            return Watcher(self, url, headers, self.logger)
         except websocket._exceptions.WebSocketException as e:
             self.watch_sock = None
             raise PredictException(400, 'url: %s, error: %s' % (url, str(e)))
