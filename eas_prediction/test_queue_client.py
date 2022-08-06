@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 QueueEndpoint = '1828488879222746.cn-shanghai.pai-eas.aliyuncs.com'
 QueueName = 'test_group.qservice'
 SinkQueueName = 'test_group.qservice/sink'
-QueueToken = 'YmE3NDkyMzdiMzNmMGM3ZmE4ZmNjZDk0M2NiMDA3OTZmNzc1MTUxNg=='
+QueueToken = ''
 
 input_queue = None
 sink_queue = None
