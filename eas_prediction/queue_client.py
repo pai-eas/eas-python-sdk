@@ -197,7 +197,7 @@ class QueueClient(PredictClient):
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.INFO)
 
-    def set_logger(logger=None):
+    def set_logger(self, logger=None):
         self.logger = logger
 
     def _with_identity(self, headers=None):
@@ -329,10 +329,12 @@ class QueueClient(PredictClient):
             index = [index]
         return self._process_indexes(index, 'DELETE').decode('utf-8')
 
-    def watch(self, index: int, window: int, index_only=False, auto_commit=False):
+    def watch(self, index: int, window: int, index_only=False, auto_commit=False, tags=None):
         """
         create a watcher to read data items from a queue
         """
+        if tags is None:
+            tags = {}
 
         query = {
             '_watch_': 'true',
@@ -341,7 +343,7 @@ class QueueClient(PredictClient):
             '_index_only_': str(index_only).lower(),
             '_auto_commit_': str(auto_commit).lower(),
         }
-
+        query.update(tags)
         url = self._build_url(query, websocket=True)
 
         headers = self._with_identity()
