@@ -7,9 +7,9 @@ pip install -U eas-prediction --user
 # Python SDK调用接口说明
 |类|主要接口|描述|
 |-----|------|------|
-|PredictClient|PredictClient(endpoint, service_name)|PredictClient类构造器，endpoint是服务端的endpoint地址，对于普通服务设置为默认网关endpoint，如eas-shanghai-intranet.alibaba-inc.com；service_name为服务名字；两个参数均可为空，在初始化后单独进行设置。|
+|PredictClient|PredictClient(endpoint, service_name)|PredictClient类构造器，endpoint是服务端的endpoint地址，对于普通服务设置为默认网关endpoint，如eas-shanghai-intranet.alibaba-inc.com；service_name为服务名字,若部署多模型服务,则service_name设置为{服务名}/{模型名}；两个参数均可为空，在初始化后单独进行设置。|
 ||set_endpoint(endpoint)|设置服务的endpoint，endpoint的说明见构造函数|
-||set_service_name(service_name)|设置请求的服务名字|
+||set_service_name(service_name)|设置请求的服务名字,若部署多模型服务,则service_name设置为{服务名}/{模型名}|
 ||set_endpoint_type(endpoint_type)|设置服务端的网关类型，支持默认网关PredictClient.ENDPOINT_TYPE_GATEWAY，PredictClient.ENDPOINT_TYPE_DIRECT，默认值为PredictClient.ENDPOINT_TYPE_GATEWAY|
 ||set_token(token)|设置服务访问的token|
 ||set_retry_count(max_retry_count)|设置请求失败重试次数，默认为5；该参数非常重要，对于服务端进程异常或机器异常或网关长连接断开等情况带来的个别请求失败，均需由客户端来重试解决，请勿将其设置为0|

@@ -24,8 +24,15 @@ class CacheServerEndpoint(Endpoint):
         internal = False
         if namespace is not None and pod_name is not None:
             internal = True
+        # filter submodels in service_name, works in multi_models
+        # eg. multi_model/xxx-> multi_model
+        pos = self.service_name.find('/')
+        if pos != -1:
+            service_name = self.service_name[:pos]
+        else:
+            service_name = self.service_name
         url = 'http://%s/exported/apis/eas.alibaba-inc.k8s.io/v1/upstreams/%s%s' % \
-              (self.domain, self.service_name, '?internal=true' if internal else '')
+              (self.domain, service_name, '?internal=true' if internal else '')
         endpoints = []
         try:
             resp = self.http.request('GET', url)
