@@ -11,7 +11,7 @@ class CacheServerEndpoint(Endpoint):
     def __init__(self, domain, service_name, logger):
         super(CacheServerEndpoint, self).__init__(logger)
         self.domain = domain
-        self.service_name = service_name
+        self.service_name = service_name.split('/')[0]
         self.http = urllib3.PoolManager()
         self.logger = logger
         self.logger.info('Service discovery endpoint is: %s' % self.domain)
