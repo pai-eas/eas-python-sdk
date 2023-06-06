@@ -5,7 +5,7 @@ from eas_prediction.request import Request
 from eas_prediction.request import Response
 from eas_prediction.easyrec_predict_pb2 import PBRequest, PBResponse
 
-class EasyrecRequest(Request):
+class EasyRecRequest(Request):
     """
     Request for tensorflow services whose input data is in format of protobuf,
     privide methods to generate the required protobuf object, and serialze it to string

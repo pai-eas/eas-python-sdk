@@ -5,7 +5,7 @@ import logging
 import sys
 import traceback
 
-from eas_prediction.easyrec_request import EasyrecRequest
+from eas_prediction.easyrec_request import EasyRecRequest
 from eas_prediction.easyrec_predict_pb2 import PBFeature
 from eas_prediction.easyrec_predict_pb2 import PBRequest
 
@@ -62,7 +62,7 @@ def parse_table_schema(create_table_sql):
 
 
 def send_request(req_pb, client, debug_level=0):
-  req = EasyrecRequest()
+  req = EasyRecRequest()
   req.add_feed(req_pb, debug_level)
   tmp = client.predict(req)
   return tmp

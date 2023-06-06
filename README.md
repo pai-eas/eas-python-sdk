@@ -249,8 +249,8 @@ from eas_prediction import PBRequest, PBFeature, PBResponse
 if __name__ == '__main__':
     endpoint = 'http://localhost:6016'
 
-    client = PredictClient(endpoint, 'hie_eas_processor_bert')
-    # client.set_token('YWFlMDYyZDNmNTc3M2I3MzMwYmY0MmYwM2Y2MTYxMTY4NzBkNzdjOQ==')
+    client = PredictClient(endpoint, 'ali_rec_test')
+    # client.set_token('12345xyz')
     client.init()
 
     req = PBRequest()
@@ -266,7 +266,7 @@ if __name__ == '__main__':
 
     req.item_ids.extend(['item_0001', 'item_0002', 'item_0003'])
     
-    easyrec_req = EasyrecRequest()
+    easyrec_req = EasyRecRequest()
     easyrec_req.add_feed(req, debug_level=0)
     res = client.predict(easyrec_req)
     print(res)
