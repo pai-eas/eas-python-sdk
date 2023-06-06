@@ -32,11 +32,11 @@ def build_request(table_cols, table_data, item_ids=None):
       if dtype == 'STRING':
         feat.string_feature = value
       elif dtype in ('FLOAT', 'DOUBLE'):
-        feat.float_feature = value
+        feat.float_feature = float(value)
       elif dtype == 'BIGINT':
-        feat.long_feature = value
+        feat.long_feature = int(value)
       elif dtype == 'INT':
-        feat.int_feature = value
+        feat.int_feature = int(value)
 
       request_pb.user_features[cname].CopyFrom(feat)
   except Exception:
@@ -49,7 +49,7 @@ def build_request(table_cols, table_data, item_ids=None):
 def parse_table_schema(create_table_sql):
   create_table_sql = create_table_sql.lower()
   spos = create_table_sql.index('(')
-  epos = create_table_sql[spos + 1:].index(')')
+  epos = create_table_sql[spos + 1:].index(')') + spos + 1
   cols = create_table_sql[(spos + 1):epos]
   cols = [x.strip().lower() for x in cols.split(',')]
   col_info_arr = []
@@ -83,13 +83,13 @@ if __name__ == '__main__':
       '--table_schema',
       type=str,
       default=None,
-      help='user feature table schema path')
+      help='user feature table schema path, example: create table(user_id string, age bigint);')
   parser.add_argument(
       '--table_data',
       type=str,
       default=None,
-      help='user feature table data path')
-  parser.add_argument('--item_lst', type=str, default=None, help='item list')
+      help='user feature table data path, content are user_feature values separated by ; , the number and types of feature values should match the definitions in table_schema')
+  parser.add_argument('--item_lst', type=str, default=None, help='item list file path, content are item_ids, each in one line')
 
   args, _ = parser.parse_known_args()
 
@@ -118,16 +118,20 @@ if __name__ == '__main__':
 
   with open(args.table_schema, 'r') as fin:
     create_table_sql = fin.read().strip()
-
-  with open(args.table_data, 'r') as fin:
-    table_data = fin.read().strip()
-
   table_cols = parse_table_schema(create_table_sql)
-  table_data = table_data.split(';')
 
+  table_data = []
+  with open(args.table_data, 'r') as fin:
+    for line_str in fin:
+      table_data.append(line_str.strip())
+
+  assert len(table_cols) == len(table_data), 'user features[%s] not match with schema[%s]' % (table_data, table_cols)
+
+  items = []
   with open(args.item_lst, 'r') as fin:
-    items = fin.read().strip()
-    items = items.split(',')
+    for line_str in fin:
+      items.append(line_str.strip())
+ 
 
   req = build_request(table_cols, table_data, item_ids=items)
   resp = send_request(req, client)

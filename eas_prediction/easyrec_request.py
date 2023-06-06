@@ -26,12 +26,12 @@ class EasyrecRequest(Request):
         """
         self.signature_name = singature_name
 
-    def add_feed(self, data, dbg_lvl=0):
+    def add_feed(self, data, debug_level=0):
         if isinstance(data, PBRequest):       
           self.request_data = data
         else:
           self.request_data.ParseFromString(data)
-        self.request_data.debug_level = dbg_lvl
+        self.request_data.debug_level = debug_level
 
     def add_user_fea_flt(self, k, v):
         self.request_data.user_features[k].float_feature = float(v)

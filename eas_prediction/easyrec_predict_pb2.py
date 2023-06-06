@@ -14,20 +14,20 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import eas_prediction.tf_predict_pb2 as tf__predict__pb2
+import eas_prediction.tf_request_pb2 as tf__request__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='predict.proto',
-  package='com.alibaba.pairec.processor',
+  package='',
   syntax='proto3',
-  serialized_pb=_b('\n\rpredict.proto\x12\x1c\x63om.alibaba.pairec.processor\x1a\x10tf_predict.proto\"L\n\x0f\x43ontextFeatures\x12\x39\n\x08\x66\x65\x61tures\x18\x01 \x03(\x0b\x32\'.com.alibaba.pairec.processor.PBFeature\"v\n\tPBFeature\x12\x15\n\x0bint_feature\x18\x01 \x01(\x05H\x00\x12\x16\n\x0clong_feature\x18\x02 \x01(\x03H\x00\x12\x18\n\x0estring_feature\x18\x03 \x01(\tH\x00\x12\x17\n\rfloat_feature\x18\x04 \x01(\x02H\x00\x42\x07\n\x05value\"\xba\x03\n\tPBRequest\x12\x13\n\x0b\x64\x65\x62ug_level\x18\x01 \x01(\x05\x12P\n\ruser_features\x18\x02 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.PBRequest.UserFeaturesEntry\x12\x10\n\x08item_ids\x18\x03 \x03(\t\x12V\n\x10\x63ontext_features\x18\x04 \x03(\x0b\x32<.com.alibaba.pairec.processor.PBRequest.ContextFeaturesEntry\x12\x17\n\x0f\x66\x61iss_neigh_num\x18\x05 \x01(\x05\x1a\\\n\x11UserFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x36\n\x05value\x18\x02 \x01(\x0b\x32\'.com.alibaba.pairec.processor.PBFeature:\x02\x38\x01\x1a\x65\n\x14\x43ontextFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12<\n\x05value\x18\x02 \x01(\x0b\x32-.com.alibaba.pairec.processor.ContextFeatures:\x02\x38\x01\"\x1d\n\x07Results\x12\x12\n\x06scores\x18\x01 \x03(\x01\x42\x02\x10\x01\"\x9c\x08\n\nPBResponse\x12\x46\n\x07results\x18\x01 \x03(\x0b\x32\x35.com.alibaba.pairec.processor.PBResponse.ResultsEntry\x12Q\n\ritem_features\x18\x02 \x03(\x0b\x32:.com.alibaba.pairec.processor.PBResponse.ItemFeaturesEntry\x12Y\n\x11generate_features\x18\x03 \x03(\x0b\x32>.com.alibaba.pairec.processor.PBResponse.GenerateFeaturesEntry\x12W\n\x10\x63ontext_features\x18\x04 \x03(\x0b\x32=.com.alibaba.pairec.processor.PBResponse.ContextFeaturesEntry\x12\x11\n\terror_msg\x18\x05 \x01(\t\x12=\n\x0bstatus_code\x18\x06 \x01(\x0e\x32(.com.alibaba.pairec.processor.StatusCode\x12\x10\n\x08item_ids\x18\x07 \x03(\t\x12\x0f\n\x07outputs\x18\x08 \x03(\t\x12O\n\x0craw_features\x18\t \x03(\x0b\x32\x39.com.alibaba.pairec.processor.PBResponse.RawFeaturesEntry\x12K\n\ntf_outputs\x18\n \x03(\x0b\x32\x37.com.alibaba.pairec.processor.PBResponse.TfOutputsEntry\x1aU\n\x0cResultsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x34\n\x05value\x18\x02 \x01(\x0b\x32%.com.alibaba.pairec.processor.Results:\x02\x38\x01\x1a\x33\n\x11ItemFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x37\n\x15GenerateFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x65\n\x14\x43ontextFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12<\n\x05value\x18\x02 \x01(\x0b\x32-.com.alibaba.pairec.processor.ContextFeatures:\x02\x38\x01\x1a\x32\n\x10RawFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1aL\n\x0eTfOutputsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12)\n\x05value\x18\x02 \x01(\x0b\x32\x1a.tensorflow.eas.ArrayProto:\x02\x38\x01*4\n\nStatusCode\x12\x06\n\x02OK\x10\x00\x12\x0f\n\x0bINPUT_EMPTY\x10\x01\x12\r\n\tEXCEPTION\x10\x02\x62\x06proto3')
+  serialized_pb=_b('\n\rpredict.proto\x1a\x10tf_request.proto\"/\n\x0f\x43ontextFeatures\x12\x1c\n\x08\x66\x65\x61tures\x18\x01 \x03(\x0b\x32\n.PBFeature\"v\n\tPBFeature\x12\x15\n\x0bint_feature\x18\x01 \x01(\x05H\x00\x12\x16\n\x0clong_feature\x18\x02 \x01(\x03H\x00\x12\x18\n\x0estring_feature\x18\x03 \x01(\tH\x00\x12\x17\n\rfloat_feature\x18\x04 \x01(\x02H\x00\x42\x07\n\x05value\"\xc6\x02\n\tPBRequest\x12\x13\n\x0b\x64\x65\x62ug_level\x18\x01 \x01(\x05\x12\x33\n\ruser_features\x18\x02 \x03(\x0b\x32\x1c.PBRequest.UserFeaturesEntry\x12\x10\n\x08item_ids\x18\x03 \x03(\t\x12\x39\n\x10\x63ontext_features\x18\x04 \x03(\x0b\x32\x1f.PBRequest.ContextFeaturesEntry\x12\x17\n\x0f\x66\x61iss_neigh_num\x18\x05 \x01(\x05\x1a?\n\x11UserFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x19\n\x05value\x18\x02 \x01(\x0b\x32\n.PBFeature:\x02\x38\x01\x1aH\n\x14\x43ontextFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1f\n\x05value\x18\x02 \x01(\x0b\x32\x10.ContextFeatures:\x02\x38\x01\"\x1d\n\x07Results\x12\x12\n\x06scores\x18\x01 \x03(\x01\x42\x02\x10\x01\"\x88\x06\n\nPBResponse\x12)\n\x07results\x18\x01 \x03(\x0b\x32\x18.PBResponse.ResultsEntry\x12\x34\n\ritem_features\x18\x02 \x03(\x0b\x32\x1d.PBResponse.ItemFeaturesEntry\x12<\n\x11generate_features\x18\x03 \x03(\x0b\x32!.PBResponse.GenerateFeaturesEntry\x12:\n\x10\x63ontext_features\x18\x04 \x03(\x0b\x32 .PBResponse.ContextFeaturesEntry\x12\x11\n\terror_msg\x18\x05 \x01(\t\x12 \n\x0bstatus_code\x18\x06 \x01(\x0e\x32\x0b.StatusCode\x12\x10\n\x08item_ids\x18\x07 \x03(\t\x12\x0f\n\x07outputs\x18\x08 \x03(\t\x12\x32\n\x0craw_features\x18\t \x03(\x0b\x32\x1c.PBResponse.RawFeaturesEntry\x12.\n\ntf_outputs\x18\n \x03(\x0b\x32\x1a.PBResponse.TfOutputsEntry\x1a\x38\n\x0cResultsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x17\n\x05value\x18\x02 \x01(\x0b\x32\x08.Results:\x02\x38\x01\x1a\x33\n\x11ItemFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x37\n\x15GenerateFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1aH\n\x14\x43ontextFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1f\n\x05value\x18\x02 \x01(\x0b\x32\x10.ContextFeatures:\x02\x38\x01\x1a\x32\n\x10RawFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a=\n\x0eTfOutputsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1a\n\x05value\x18\x02 \x01(\x0b\x32\x0b.ArrayProto:\x02\x38\x01*4\n\nStatusCode\x12\x06\n\x02OK\x10\x00\x12\x0f\n\x0bINPUT_EMPTY\x10\x01\x12\r\n\tEXCEPTION\x10\x02\x62\x06proto3')
   ,
-  dependencies=[tf__predict__pb2.DESCRIPTOR,])
+  dependencies=[tf__request__pb2.DESCRIPTOR,])
 
 _STATUSCODE = _descriptor.EnumDescriptor(
   name='StatusCode',
-  full_name='com.alibaba.pairec.processor.StatusCode',
+  full_name='StatusCode',
   filename=None,
   file=DESCRIPTOR,
   values=[
@@ -46,8 +46,8 @@ _STATUSCODE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1794,
-  serialized_end=1846,
+  serialized_start=1343,
+  serialized_end=1395,
 )
 _sym_db.RegisterEnumDescriptor(_STATUSCODE)
 
@@ -60,13 +60,13 @@ EXCEPTION = 2
 
 _CONTEXTFEATURES = _descriptor.Descriptor(
   name='ContextFeatures',
-  full_name='com.alibaba.pairec.processor.ContextFeatures',
+  full_name='ContextFeatures',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='features', full_name='com.alibaba.pairec.processor.ContextFeatures.features', index=0,
+      name='features', full_name='ContextFeatures.features', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -84,41 +84,41 @@ _CONTEXTFEATURES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=65,
-  serialized_end=141,
+  serialized_start=35,
+  serialized_end=82,
 )
 
 
 _PBFEATURE = _descriptor.Descriptor(
   name='PBFeature',
-  full_name='com.alibaba.pairec.processor.PBFeature',
+  full_name='PBFeature',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='int_feature', full_name='com.alibaba.pairec.processor.PBFeature.int_feature', index=0,
+      name='int_feature', full_name='PBFeature.int_feature', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='long_feature', full_name='com.alibaba.pairec.processor.PBFeature.long_feature', index=1,
+      name='long_feature', full_name='PBFeature.long_feature', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='string_feature', full_name='com.alibaba.pairec.processor.PBFeature.string_feature', index=2,
+      name='string_feature', full_name='PBFeature.string_feature', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='float_feature', full_name='com.alibaba.pairec.processor.PBFeature.float_feature', index=3,
+      name='float_feature', full_name='PBFeature.float_feature', index=3,
       number=4, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
@@ -136,30 +136,30 @@ _PBFEATURE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
     _descriptor.OneofDescriptor(
-      name='value', full_name='com.alibaba.pairec.processor.PBFeature.value',
+      name='value', full_name='PBFeature.value',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=143,
-  serialized_end=261,
+  serialized_start=84,
+  serialized_end=202,
 )
 
 
 _PBREQUEST_USERFEATURESENTRY = _descriptor.Descriptor(
   name='UserFeaturesEntry',
-  full_name='com.alibaba.pairec.processor.PBRequest.UserFeaturesEntry',
+  full_name='PBRequest.UserFeaturesEntry',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='com.alibaba.pairec.processor.PBRequest.UserFeaturesEntry.key', index=0,
+      name='key', full_name='PBRequest.UserFeaturesEntry.key', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='value', full_name='com.alibaba.pairec.processor.PBRequest.UserFeaturesEntry.value', index=1,
+      name='value', full_name='PBRequest.UserFeaturesEntry.value', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -177,26 +177,26 @@ _PBREQUEST_USERFEATURESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=511,
-  serialized_end=603,
+  serialized_start=394,
+  serialized_end=457,
 )
 
 _PBREQUEST_CONTEXTFEATURESENTRY = _descriptor.Descriptor(
   name='ContextFeaturesEntry',
-  full_name='com.alibaba.pairec.processor.PBRequest.ContextFeaturesEntry',
+  full_name='PBRequest.ContextFeaturesEntry',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='com.alibaba.pairec.processor.PBRequest.ContextFeaturesEntry.key', index=0,
+      name='key', full_name='PBRequest.ContextFeaturesEntry.key', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='value', full_name='com.alibaba.pairec.processor.PBRequest.ContextFeaturesEntry.value', index=1,
+      name='value', full_name='PBRequest.ContextFeaturesEntry.value', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -214,47 +214,47 @@ _PBREQUEST_CONTEXTFEATURESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=605,
-  serialized_end=706,
+  serialized_start=459,
+  serialized_end=531,
 )
 
 _PBREQUEST = _descriptor.Descriptor(
   name='PBRequest',
-  full_name='com.alibaba.pairec.processor.PBRequest',
+  full_name='PBRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='debug_level', full_name='com.alibaba.pairec.processor.PBRequest.debug_level', index=0,
+      name='debug_level', full_name='PBRequest.debug_level', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='user_features', full_name='com.alibaba.pairec.processor.PBRequest.user_features', index=1,
+      name='user_features', full_name='PBRequest.user_features', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='item_ids', full_name='com.alibaba.pairec.processor.PBRequest.item_ids', index=2,
+      name='item_ids', full_name='PBRequest.item_ids', index=2,
       number=3, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='context_features', full_name='com.alibaba.pairec.processor.PBRequest.context_features', index=3,
+      name='context_features', full_name='PBRequest.context_features', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='faiss_neigh_num', full_name='com.alibaba.pairec.processor.PBRequest.faiss_neigh_num', index=4,
+      name='faiss_neigh_num', full_name='PBRequest.faiss_neigh_num', index=4,
       number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -272,20 +272,20 @@ _PBREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=264,
-  serialized_end=706,
+  serialized_start=205,
+  serialized_end=531,
 )
 
 
 _RESULTS = _descriptor.Descriptor(
   name='Results',
-  full_name='com.alibaba.pairec.processor.Results',
+  full_name='Results',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='scores', full_name='com.alibaba.pairec.processor.Results.scores', index=0,
+      name='scores', full_name='Results.scores', index=0,
       number=1, type=1, cpp_type=5, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -303,27 +303,27 @@ _RESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=708,
-  serialized_end=737,
+  serialized_start=533,
+  serialized_end=562,
 )
 
 
 _PBRESPONSE_RESULTSENTRY = _descriptor.Descriptor(
   name='ResultsEntry',
-  full_name='com.alibaba.pairec.processor.PBResponse.ResultsEntry',
+  full_name='PBResponse.ResultsEntry',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='com.alibaba.pairec.processor.PBResponse.ResultsEntry.key', index=0,
+      name='key', full_name='PBResponse.ResultsEntry.key', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='value', full_name='com.alibaba.pairec.processor.PBResponse.ResultsEntry.value', index=1,
+      name='value', full_name='PBResponse.ResultsEntry.value', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -341,26 +341,26 @@ _PBRESPONSE_RESULTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1364,
-  serialized_end=1449,
+  serialized_start=986,
+  serialized_end=1042,
 )
 
 _PBRESPONSE_ITEMFEATURESENTRY = _descriptor.Descriptor(
   name='ItemFeaturesEntry',
-  full_name='com.alibaba.pairec.processor.PBResponse.ItemFeaturesEntry',
+  full_name='PBResponse.ItemFeaturesEntry',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='com.alibaba.pairec.processor.PBResponse.ItemFeaturesEntry.key', index=0,
+      name='key', full_name='PBResponse.ItemFeaturesEntry.key', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='value', full_name='com.alibaba.pairec.processor.PBResponse.ItemFeaturesEntry.value', index=1,
+      name='value', full_name='PBResponse.ItemFeaturesEntry.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -378,26 +378,26 @@ _PBRESPONSE_ITEMFEATURESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1451,
-  serialized_end=1502,
+  serialized_start=1044,
+  serialized_end=1095,
 )
 
 _PBRESPONSE_GENERATEFEATURESENTRY = _descriptor.Descriptor(
   name='GenerateFeaturesEntry',
-  full_name='com.alibaba.pairec.processor.PBResponse.GenerateFeaturesEntry',
+  full_name='PBResponse.GenerateFeaturesEntry',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='com.alibaba.pairec.processor.PBResponse.GenerateFeaturesEntry.key', index=0,
+      name='key', full_name='PBResponse.GenerateFeaturesEntry.key', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='value', full_name='com.alibaba.pairec.processor.PBResponse.GenerateFeaturesEntry.value', index=1,
+      name='value', full_name='PBResponse.GenerateFeaturesEntry.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -415,26 +415,26 @@ _PBRESPONSE_GENERATEFEATURESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1504,
-  serialized_end=1559,
+  serialized_start=1097,
+  serialized_end=1152,
 )
 
 _PBRESPONSE_CONTEXTFEATURESENTRY = _descriptor.Descriptor(
   name='ContextFeaturesEntry',
-  full_name='com.alibaba.pairec.processor.PBResponse.ContextFeaturesEntry',
+  full_name='PBResponse.ContextFeaturesEntry',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='com.alibaba.pairec.processor.PBResponse.ContextFeaturesEntry.key', index=0,
+      name='key', full_name='PBResponse.ContextFeaturesEntry.key', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='value', full_name='com.alibaba.pairec.processor.PBResponse.ContextFeaturesEntry.value', index=1,
+      name='value', full_name='PBResponse.ContextFeaturesEntry.value', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -452,26 +452,26 @@ _PBRESPONSE_CONTEXTFEATURESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=605,
-  serialized_end=706,
+  serialized_start=459,
+  serialized_end=531,
 )
 
 _PBRESPONSE_RAWFEATURESENTRY = _descriptor.Descriptor(
   name='RawFeaturesEntry',
-  full_name='com.alibaba.pairec.processor.PBResponse.RawFeaturesEntry',
+  full_name='PBResponse.RawFeaturesEntry',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='com.alibaba.pairec.processor.PBResponse.RawFeaturesEntry.key', index=0,
+      name='key', full_name='PBResponse.RawFeaturesEntry.key', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='value', full_name='com.alibaba.pairec.processor.PBResponse.RawFeaturesEntry.value', index=1,
+      name='value', full_name='PBResponse.RawFeaturesEntry.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -489,26 +489,26 @@ _PBRESPONSE_RAWFEATURESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1664,
-  serialized_end=1714,
+  serialized_start=1228,
+  serialized_end=1278,
 )
 
 _PBRESPONSE_TFOUTPUTSENTRY = _descriptor.Descriptor(
   name='TfOutputsEntry',
-  full_name='com.alibaba.pairec.processor.PBResponse.TfOutputsEntry',
+  full_name='PBResponse.TfOutputsEntry',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='com.alibaba.pairec.processor.PBResponse.TfOutputsEntry.key', index=0,
+      name='key', full_name='PBResponse.TfOutputsEntry.key', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='value', full_name='com.alibaba.pairec.processor.PBResponse.TfOutputsEntry.value', index=1,
+      name='value', full_name='PBResponse.TfOutputsEntry.value', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -526,82 +526,82 @@ _PBRESPONSE_TFOUTPUTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1716,
-  serialized_end=1792,
+  serialized_start=1280,
+  serialized_end=1341,
 )
 
 _PBRESPONSE = _descriptor.Descriptor(
   name='PBResponse',
-  full_name='com.alibaba.pairec.processor.PBResponse',
+  full_name='PBResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='results', full_name='com.alibaba.pairec.processor.PBResponse.results', index=0,
+      name='results', full_name='PBResponse.results', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='item_features', full_name='com.alibaba.pairec.processor.PBResponse.item_features', index=1,
+      name='item_features', full_name='PBResponse.item_features', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='generate_features', full_name='com.alibaba.pairec.processor.PBResponse.generate_features', index=2,
+      name='generate_features', full_name='PBResponse.generate_features', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='context_features', full_name='com.alibaba.pairec.processor.PBResponse.context_features', index=3,
+      name='context_features', full_name='PBResponse.context_features', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='error_msg', full_name='com.alibaba.pairec.processor.PBResponse.error_msg', index=4,
+      name='error_msg', full_name='PBResponse.error_msg', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='status_code', full_name='com.alibaba.pairec.processor.PBResponse.status_code', index=5,
+      name='status_code', full_name='PBResponse.status_code', index=5,
       number=6, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='item_ids', full_name='com.alibaba.pairec.processor.PBResponse.item_ids', index=6,
+      name='item_ids', full_name='PBResponse.item_ids', index=6,
       number=7, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='outputs', full_name='com.alibaba.pairec.processor.PBResponse.outputs', index=7,
+      name='outputs', full_name='PBResponse.outputs', index=7,
       number=8, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='raw_features', full_name='com.alibaba.pairec.processor.PBResponse.raw_features', index=8,
+      name='raw_features', full_name='PBResponse.raw_features', index=8,
       number=9, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='tf_outputs', full_name='com.alibaba.pairec.processor.PBResponse.tf_outputs', index=9,
+      name='tf_outputs', full_name='PBResponse.tf_outputs', index=9,
       number=10, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -619,8 +619,8 @@ _PBRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=740,
-  serialized_end=1792,
+  serialized_start=565,
+  serialized_end=1341,
 )
 
 _CONTEXTFEATURES.fields_by_name['features'].message_type = _PBFEATURE
@@ -649,7 +649,7 @@ _PBRESPONSE_GENERATEFEATURESENTRY.containing_type = _PBRESPONSE
 _PBRESPONSE_CONTEXTFEATURESENTRY.fields_by_name['value'].message_type = _CONTEXTFEATURES
 _PBRESPONSE_CONTEXTFEATURESENTRY.containing_type = _PBRESPONSE
 _PBRESPONSE_RAWFEATURESENTRY.containing_type = _PBRESPONSE
-_PBRESPONSE_TFOUTPUTSENTRY.fields_by_name['value'].message_type = tf__predict__pb2._ARRAYPROTO
+_PBRESPONSE_TFOUTPUTSENTRY.fields_by_name['value'].message_type = tf__request__pb2._ARRAYPROTO
 _PBRESPONSE_TFOUTPUTSENTRY.containing_type = _PBRESPONSE
 _PBRESPONSE.fields_by_name['results'].message_type = _PBRESPONSE_RESULTSENTRY
 _PBRESPONSE.fields_by_name['item_features'].message_type = _PBRESPONSE_ITEMFEATURESENTRY
@@ -669,14 +669,14 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 ContextFeatures = _reflection.GeneratedProtocolMessageType('ContextFeatures', (_message.Message,), dict(
   DESCRIPTOR = _CONTEXTFEATURES,
   __module__ = 'predict_pb2'
-  # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.ContextFeatures)
+  # @@protoc_insertion_point(class_scope:ContextFeatures)
   ))
 _sym_db.RegisterMessage(ContextFeatures)
 
 PBFeature = _reflection.GeneratedProtocolMessageType('PBFeature', (_message.Message,), dict(
   DESCRIPTOR = _PBFEATURE,
   __module__ = 'predict_pb2'
-  # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBFeature)
+  # @@protoc_insertion_point(class_scope:PBFeature)
   ))
 _sym_db.RegisterMessage(PBFeature)
 
@@ -685,19 +685,19 @@ PBRequest = _reflection.GeneratedProtocolMessageType('PBRequest', (_message.Mess
   UserFeaturesEntry = _reflection.GeneratedProtocolMessageType('UserFeaturesEntry', (_message.Message,), dict(
     DESCRIPTOR = _PBREQUEST_USERFEATURESENTRY,
     __module__ = 'predict_pb2'
-    # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBRequest.UserFeaturesEntry)
+    # @@protoc_insertion_point(class_scope:PBRequest.UserFeaturesEntry)
     ))
   ,
 
   ContextFeaturesEntry = _reflection.GeneratedProtocolMessageType('ContextFeaturesEntry', (_message.Message,), dict(
     DESCRIPTOR = _PBREQUEST_CONTEXTFEATURESENTRY,
     __module__ = 'predict_pb2'
-    # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBRequest.ContextFeaturesEntry)
+    # @@protoc_insertion_point(class_scope:PBRequest.ContextFeaturesEntry)
     ))
   ,
   DESCRIPTOR = _PBREQUEST,
   __module__ = 'predict_pb2'
-  # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBRequest)
+  # @@protoc_insertion_point(class_scope:PBRequest)
   ))
 _sym_db.RegisterMessage(PBRequest)
 _sym_db.RegisterMessage(PBRequest.UserFeaturesEntry)
@@ -706,7 +706,7 @@ _sym_db.RegisterMessage(PBRequest.ContextFeaturesEntry)
 Results = _reflection.GeneratedProtocolMessageType('Results', (_message.Message,), dict(
   DESCRIPTOR = _RESULTS,
   __module__ = 'predict_pb2'
-  # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.Results)
+  # @@protoc_insertion_point(class_scope:Results)
   ))
 _sym_db.RegisterMessage(Results)
 
@@ -715,47 +715,47 @@ PBResponse = _reflection.GeneratedProtocolMessageType('PBResponse', (_message.Me
   ResultsEntry = _reflection.GeneratedProtocolMessageType('ResultsEntry', (_message.Message,), dict(
     DESCRIPTOR = _PBRESPONSE_RESULTSENTRY,
     __module__ = 'predict_pb2'
-    # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBResponse.ResultsEntry)
+    # @@protoc_insertion_point(class_scope:PBResponse.ResultsEntry)
     ))
   ,
 
   ItemFeaturesEntry = _reflection.GeneratedProtocolMessageType('ItemFeaturesEntry', (_message.Message,), dict(
     DESCRIPTOR = _PBRESPONSE_ITEMFEATURESENTRY,
     __module__ = 'predict_pb2'
-    # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBResponse.ItemFeaturesEntry)
+    # @@protoc_insertion_point(class_scope:PBResponse.ItemFeaturesEntry)
     ))
   ,
 
   GenerateFeaturesEntry = _reflection.GeneratedProtocolMessageType('GenerateFeaturesEntry', (_message.Message,), dict(
     DESCRIPTOR = _PBRESPONSE_GENERATEFEATURESENTRY,
     __module__ = 'predict_pb2'
-    # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBResponse.GenerateFeaturesEntry)
+    # @@protoc_insertion_point(class_scope:PBResponse.GenerateFeaturesEntry)
     ))
   ,
 
   ContextFeaturesEntry = _reflection.GeneratedProtocolMessageType('ContextFeaturesEntry', (_message.Message,), dict(
     DESCRIPTOR = _PBRESPONSE_CONTEXTFEATURESENTRY,
     __module__ = 'predict_pb2'
-    # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBResponse.ContextFeaturesEntry)
+    # @@protoc_insertion_point(class_scope:PBResponse.ContextFeaturesEntry)
     ))
   ,
 
   RawFeaturesEntry = _reflection.GeneratedProtocolMessageType('RawFeaturesEntry', (_message.Message,), dict(
     DESCRIPTOR = _PBRESPONSE_RAWFEATURESENTRY,
     __module__ = 'predict_pb2'
-    # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBResponse.RawFeaturesEntry)
+    # @@protoc_insertion_point(class_scope:PBResponse.RawFeaturesEntry)
     ))
   ,
 
   TfOutputsEntry = _reflection.GeneratedProtocolMessageType('TfOutputsEntry', (_message.Message,), dict(
     DESCRIPTOR = _PBRESPONSE_TFOUTPUTSENTRY,
     __module__ = 'predict_pb2'
-    # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBResponse.TfOutputsEntry)
+    # @@protoc_insertion_point(class_scope:PBResponse.TfOutputsEntry)
     ))
   ,
   DESCRIPTOR = _PBRESPONSE,
   __module__ = 'predict_pb2'
-  # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBResponse)
+  # @@protoc_insertion_point(class_scope:PBResponse)
   ))
 _sym_db.RegisterMessage(PBResponse)
 _sym_db.RegisterMessage(PBResponse.ResultsEntry)
