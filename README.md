@@ -238,3 +238,36 @@ if __name__ == '__main__':
             print("{}: output: {}, shape: {}".format(x, name, arr.shape))
     print("average response time: %s s" % (timer / 10) )
 ```
+
+## EasyRecProcessor输入输出程序实例
+EasyRec用户可以PBFeature与PBResponse作为数据输入输出格式, 具体demo示例如下:
+
+```python
+from eas_prediction import PredictClient
+from eas_prediction import PBRequest, PBFeature, PBResponse
+
+if __name__ == '__main__':
+    endpoint = 'http://localhost:6016'
+
+    client = PredictClient(endpoint, 'ali_rec_test')
+    # client.set_token('12345xyz')
+    client.init()
+
+    req = PBRequest()
+    uid = PBFeature()
+    uid.string_feature = 'u0001'
+    req.user_features['user_id'] = uid
+    age = PBFeature()
+    age.int_feature = 12
+    req.user_features['age'] = age
+    weight = PBFeature()
+    weight.float_feature = 129.8
+    req.user_features['weight'] = weight
+
+    req.item_ids.extend(['item_0001', 'item_0002', 'item_0003'])
+    
+    easyrec_req = EasyRecRequest()
+    easyrec_req.add_feed(req, debug_level=0)
+    res = client.predict(easyrec_req)
+    print(res)
+```
