@@ -211,12 +211,15 @@ class QueueClient(PredictClient):
         headers[HeaderRedisGid] = self.gid
         return headers
 
-    def _build_url(self, query, websocket=False):
+    def _build_url(self, query, websocket=False, customurl=''):
         """
         build the url of target queue service
         """
         domain = self.endpoint.get()
-        url = '%s/api/predict/%s' % (domain, self.service_name)
+        if customurl == '':
+            url = '%s/api/predict/%s' % (domain, self.service_name)
+        else:
+            url = '%s/api/predict/%s/%s' % (domain, self.service_name, customurl)
 
         if websocket:
             url = url.replace('http://', 'ws://').replace('https://', 'wss://')
@@ -275,11 +278,11 @@ class QueueClient(PredictClient):
         headers = self._with_identity()
         return self._do_request(url, 'DELETE', headers).data
 
-    def put(self, data, tags: dict = {}):
+    def put(self, data, tags: dict = {}, customurl=''):
         """
         put data into a queue service
         """
-        url = self._build_url(tags)
+        url = self._build_url(tags, customurl)
 
         headers = self._with_identity()
         resp = self._do_request(url, 'POST', headers, data)
