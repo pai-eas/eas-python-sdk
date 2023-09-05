@@ -219,7 +219,7 @@ class QueueClient(PredictClient):
         if customurl == '':
             url = '%s/api/predict/%s' % (domain, self.service_name)
         else:
-            url = '%s/api/predict/%s/%s' % (domain, self.service_name, customurl)
+            url = customurl
 
         if websocket:
             url = url.replace('http://', 'ws://').replace('https://', 'wss://')
