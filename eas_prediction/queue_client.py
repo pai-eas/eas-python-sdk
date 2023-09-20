@@ -181,7 +181,7 @@ class QueueClient(PredictClient):
     to perform the request through established persistent connections.
     """
 
-    def init(self, uid=None, gid='eas'):
+    def init(self, uid=None, gid='eas', customurl='', path_suffix=''):
         """
         init async client with uid and group id
         """
@@ -196,6 +196,8 @@ class QueueClient(PredictClient):
         self.watch_lock = threading.Lock()
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.INFO)
+        self.customurl = customurl
+        self.path_suffix = path_suffix
 
     def set_logger(self, logger=None):
         self.logger = logger
@@ -211,15 +213,18 @@ class QueueClient(PredictClient):
         headers[HeaderRedisGid] = self.gid
         return headers
 
-    def _build_url(self, query, websocket=False, customurl=''):
+    def _build_url(self, query, websocket=False):
         """
         build the url of target queue service
         """
         domain = self.endpoint.get()
-        if customurl == '':
-            url = '%s/api/predict/%s' % (domain, self.service_name)
+        if self.customurl == '':
+            if self.path_suffix == '':
+                url = '%s/api/predict/%s' % (domain, self.service_name)
+            else:
+                url = '%s/api/predict/%s/%s' % (domain, self.service_name, self.path_suffix)
         else:
-            url = customurl
+            url = self.customurl
 
         if websocket:
             url = url.replace('http://', 'ws://').replace('https://', 'wss://')
@@ -278,11 +283,11 @@ class QueueClient(PredictClient):
         headers = self._with_identity()
         return self._do_request(url, 'DELETE', headers).data
 
-    def put(self, data, tags: dict = {}, customurl=''):
+    def put(self, data, tags: dict = {}):
         """
         put data into a queue service
         """
-        url = self._build_url(tags, customurl)
+        url = self._build_url(tags)
 
         headers = self._with_identity()
         resp = self._do_request(url, 'POST', headers, data)
