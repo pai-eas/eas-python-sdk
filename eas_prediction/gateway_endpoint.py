@@ -12,9 +12,12 @@ class GatewayEndpoint(Endpoint):
     service accessing, there's no need for client to implement round robin,
     every time a request is invoked, just return the static http address.
     """
-    def __init__(self, domain, service_name, logger):
+
+    def __init__(self, domain, service_name, logger, custom_url=''):
         super(GatewayEndpoint, self).__init__(logger)
-        if domain is None or len(domain) == 0:
+        if domain is not None and len(custom_url) > 0:
+            domain = custom_url
+        elif domain is None or len(domain) == 0:
             namespace = os.getenv('NAMESPACE')
             if namespace is None or len(namespace) == 0:
                 raise PredictException(500, '\'endpoint\' must be set when running outside eas service')
@@ -36,4 +39,3 @@ class GatewayEndpoint(Endpoint):
 
     def get(self):
         return self.domain
-

@@ -66,7 +66,7 @@ class PredictClient:
             self.connection_pool = PoolManager(maxsize=self.max_connection_count)
 
         if self.endpoint_type == '' or self.endpoint_type == ENDPOINT_TYPE_DEFAULT:
-            self.endpoint = GatewayEndpoint(self.endpoint_name, self.service_name, self.logger)
+            self.endpoint = GatewayEndpoint(self.endpoint_name, self.service_name, self.logger, self.custom_url)
         elif self.endpoint_type == ENDPOINT_TYPE_VIPSERVER:
             self.endpoint = VipServerEndpoint(self.endpoint_name, self.logger)
         elif self.endpoint_type == ENDPOINT_TYPE_DIRECT:
@@ -147,7 +147,7 @@ class PredictClient:
                 'Content-Length': '%d' % len(request_data),
                 'Authorization': self.token
             }
-        
+
         canonicalized_resource = '/api/predict/%s' % self.service_name
         content_md5 = hashlib.md5(request_data).hexdigest()
         verb = 'POST'
@@ -180,7 +180,7 @@ class PredictClient:
                 domain = self.endpoint.get()
                 if self.custom_url != '':
                     url = self.custom_url
-                else :
+                else:
                     url = u'%s/api/predict/%s' % (domain, self.service_name)
                 self.logger.debug('Request to url: %s' % url)
                 req_str = req.to_string()
