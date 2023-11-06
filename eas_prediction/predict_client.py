@@ -29,7 +29,7 @@ class PredictClient:
     to perform the request through established persistent connections.
     """
 
-    def __init__(self, endpoint='', service_name=''):
+    def __init__(self, endpoint='', service_name='', custom_url=''):
         self.retry_count = 5
         self.max_connection_count = 100
         self.token = ''
@@ -38,6 +38,7 @@ class PredictClient:
         self.connection_pool = None
         self.endpoint_type = ''
         self.endpoint_name = endpoint
+        self.custom_url = custom_url
         self.service_name = service_name
         self.stop = False
         self.logger = logging.getLogger(endpoint + '/' + service_name)
@@ -65,7 +66,7 @@ class PredictClient:
             self.connection_pool = PoolManager(maxsize=self.max_connection_count)
 
         if self.endpoint_type == '' or self.endpoint_type == ENDPOINT_TYPE_DEFAULT:
-            self.endpoint = GatewayEndpoint(self.endpoint_name, self.service_name, self.logger)
+            self.endpoint = GatewayEndpoint(self.endpoint_name, self.service_name, self.logger, self.custom_url)
         elif self.endpoint_type == ENDPOINT_TYPE_VIPSERVER:
             self.endpoint = VipServerEndpoint(self.endpoint_name, self.logger)
         elif self.endpoint_type == ENDPOINT_TYPE_DIRECT:
@@ -136,12 +137,19 @@ class PredictClient:
         self.timeout = timeout
 
     def generate_singaure(self, request_data):
-        canonicalized_resource = '/api/predict/%s' % self.service_name
-
-        content_md5 = hashlib.md5(request_data).hexdigest()
         content_type = 'application/octet-stream'
         utcnow = datetime.datetime.now()
         current_time = utcnow.strftime('%a, %d %b %Y %H:%M:%S GMT')
+        if self.custom_url != '':
+            return {
+                'Date': current_time,
+                'Content-Type': content_type,
+                'Content-Length': '%d' % len(request_data),
+                'Authorization': self.token
+            }
+
+        canonicalized_resource = '/api/predict/%s' % self.service_name
+        content_md5 = hashlib.md5(request_data).hexdigest()
         verb = 'POST'
 
         auth = '%s\n%s\n%s\n%s\n%s' % (verb, content_md5, content_type, current_time, canonicalized_resource)
@@ -170,7 +178,10 @@ class PredictClient:
         for i in range(0, self.retry_count):
             try:
                 domain = self.endpoint.get()
-                url = u'%s/api/predict/%s' % (domain, self.service_name)
+                if self.custom_url != '':
+                    url = self.custom_url
+                else:
+                    url = u'%s/api/predict/%s' % (domain, self.service_name)
                 self.logger.debug('Request to url: %s' % url)
                 req_str = req.to_string()
                 if sys.version_info[0] == 3 and isinstance(req_str, str):

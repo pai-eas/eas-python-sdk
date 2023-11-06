@@ -85,6 +85,9 @@ class TorchResponse(Response):
     def __str__(self):
         return str(self.response)
 
+    def to_string(self):
+        return str(self.response)
+
     def get_tensor_shape(self, output_index):
         """
         Get the shape of a specified output tensor

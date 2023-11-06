@@ -181,7 +181,7 @@ class QueueClient(PredictClient):
     to perform the request through established persistent connections.
     """
 
-    def init(self, uid=None, gid='eas', customurl='', path_suffix=''):
+    def init(self, uid=None, gid='eas', custom_url='', path_suffix=''):
         """
         init async client with uid and group id
         """
@@ -196,7 +196,7 @@ class QueueClient(PredictClient):
         self.watch_lock = threading.Lock()
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.INFO)
-        self.customurl = customurl
+        self.custom_url = custom_url
         self.path_suffix = path_suffix
 
     def set_logger(self, logger=None):
@@ -218,13 +218,13 @@ class QueueClient(PredictClient):
         build the url of target queue service
         """
         domain = self.endpoint.get()
-        if self.customurl == '':
+        if self.custom_url == '':
             if self.path_suffix == '':
                 url = '%s/api/predict/%s' % (domain, self.service_name)
             else:
                 url = '%s/api/predict/%s/%s' % (domain, self.service_name, self.path_suffix)
         else:
-            url = self.customurl
+            url = self.custom_url
 
         if websocket:
             url = url.replace('http://', 'ws://').replace('https://', 'wss://')
