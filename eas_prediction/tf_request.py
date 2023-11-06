@@ -56,8 +56,8 @@ class TFRequest(Request):
         integer_types = [
             tf_pb.DT_INT8,
             tf_pb.DT_INT16,
-            tf_pb.DT_INT32 ,
-            tf_pb.DT_UINT8 ,
+            tf_pb.DT_INT32,
+            tf_pb.DT_UINT8,
             tf_pb.DT_UINT16,
             tf_pb.DT_QINT8,
             tf_pb.DT_QINT16,
@@ -113,6 +113,9 @@ class TFResponse(Response):
         self.response.ParseFromString(response_data)
 
     def __str__(self):
+        return str(self.response)
+
+    def to_string(self):
         return str(self.response)
 
     def get_tensor_shape(self, output_name):
