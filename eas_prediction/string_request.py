@@ -41,3 +41,5 @@ class StringResponse(Response):
     def __str__(self):
         return str(self.response_data)
 
+    def to_string(self):
+        return str(self.response_data)
