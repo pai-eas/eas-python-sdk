@@ -213,6 +213,14 @@ class QueueClient(PredictClient):
         headers[HeaderRedisGid] = self.gid
         return headers
 
+    def _check_index(self, index):
+        if isinstance(index, (int, float)) and index > 0:
+            return True
+        elif isinstance(index, str) and index.isnumeric() and int(index) > 0:
+            return True
+        else:
+            return False
+
     def _build_url(self, query, websocket=False):
         """
         build the url of target queue service
@@ -302,6 +310,28 @@ class QueueClient(PredictClient):
 
         headers = self._with_identity()
         resp = self._do_request(url, 'GET', headers)
+        return json.loads(resp.data.strip().decode('utf-8'))
+
+    def search(self,  index):
+        """
+        search the info of data
+        """
+        if not self._check_index(index):
+            self.logger and self.logger.warning(
+                "invalid search index: {}".format(index))
+            return json.loads("{}")
+        query = {
+            '_search_': 'true',
+            '_index_': str(index)
+        }
+        url = self._build_url(query)
+
+        headers = self._with_identity()
+        try:
+            resp = self._do_request(url, 'GET', headers)
+        except PredictException as e:
+            self.logger and self.logger.warning("search error: {}".format(e))
+            return json.loads("{}")
         return json.loads(resp.data.strip().decode('utf-8'))
 
     def get(self, request_id=None, index=0, length=1, timeout='5s', auto_delete=True, tags={}):
