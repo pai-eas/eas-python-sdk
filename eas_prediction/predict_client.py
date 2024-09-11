@@ -40,6 +40,7 @@ class PredictClient:
         self.endpoint_name = endpoint
         self.custom_url = custom_url
         self.service_name = service_name
+        self.content_type = ''
         self.stop = False
         self.logger = logging.getLogger(endpoint + '/' + service_name)
         self.logger.addHandler(logging.StreamHandler(stream=sys.stdout))
@@ -107,6 +108,13 @@ class PredictClient:
         """
         self.token = token
 
+    def set_content_type(self, content_type):
+        """
+        Set the content_type for the client
+        :param content_type: content_type
+        """
+        self.content_type = content_type
+
     def set_log_level(self, log_level):
         """
         Set log level for logging module
@@ -137,8 +145,11 @@ class PredictClient:
         self.timeout = timeout
 
     def generate_singaure(self, request_data):
-        content_type = 'application/octet-stream'
         utcnow = datetime.datetime.now()
+        content_type = self.content_type
+        if len(content_type) == 0:
+            content_type = 'application/octet-stream'
+
         current_time = utcnow.strftime('%a, %d %b %Y %H:%M:%S GMT')
         if self.custom_url != '':
             return {

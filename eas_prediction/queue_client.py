@@ -208,6 +208,9 @@ class QueueClient(PredictClient):
         """
         if headers is None:
             headers = {}
+        if len(self.content_type) > 0:
+            headers.update({'Content-Type': self.content_type})
+
         headers[HeaderAuthorization] = self.token
         headers[HeaderRedisUid] = self.uid
         headers[HeaderRedisGid] = self.gid
