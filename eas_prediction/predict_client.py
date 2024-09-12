@@ -41,6 +41,7 @@ class PredictClient:
         self.custom_url = custom_url
         self.service_name = service_name
         self.content_type = ''
+        self.headers = {}
         self.stop = False
         self.logger = logging.getLogger(endpoint + '/' + service_name)
         self.logger.addHandler(logging.StreamHandler(stream=sys.stdout))
@@ -144,6 +145,17 @@ class PredictClient:
         """
         self.timeout = timeout
 
+    def add_extra_headers(self, headers: dict):
+        """
+        Set the request headers for the client
+        :param headers: headers of a single request
+        :return:
+        """
+        if not isinstance(headers, dict):
+            raise TypeError("headers must be a dict")
+
+        self.headers.update(headers)
+
     def generate_singaure(self, request_data):
         utcnow = datetime.datetime.now()
         content_type = self.content_type
@@ -185,7 +197,7 @@ class PredictClient:
         :param req: abstract class of the request
         :return: service response correlated with the input request
         """
-        headers = None
+        headers = self.headers
         for i in range(0, self.retry_count):
             try:
                 domain = self.endpoint.get()
@@ -200,7 +212,7 @@ class PredictClient:
                 else:
                     req_body = bytearray(req_str)
                 if len(self.token) > 0:
-                    headers = self.generate_singaure(req_body)
+                    headers.update(self.generate_singaure(req_body))
                 resp = self.connection_pool.request('POST', url,
                                                     headers=headers,
                                                     body=req_body,
