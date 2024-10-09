@@ -244,7 +244,9 @@ EasyRec用户可以PBFeature与PBResponse作为数据输入输出格式, 具体d
 
 ```python
 from eas_prediction import PredictClient
-from eas_prediction import PBRequest, PBFeature, PBResponse
+from eas_prediction.easyrec_request import EasyRecRequest
+from eas_prediction.easyrec_predict_pb2 import PBFeature
+from eas_prediction.easyrec_predict_pb2 import PBRequest
 
 if __name__ == '__main__':
     endpoint = 'http://localhost:6016'
@@ -271,3 +273,31 @@ if __name__ == '__main__':
     res = client.predict(easyrec_req)
     print(res)
 ```
+
+## TorchRecProcessor输入输出程序实例
+TorchRec用户可以PBFeature与PBResponse作为数据输入输出格式, 具体demo示例如下:
+
+```python
+from eas_prediction import PredictClient
+from eas_prediction.torchrec_request import TorchRecRequest
+
+
+if __name__ == '__main__':
+    endpoint = 'http://localhost:6016'
+
+    client = PredictClient(endpoint, 'torch_rec_test')
+    # client.set_token('12345xyz')
+    client.init()
+    torchrec_req = TorchRecRequest()
+    
+    torchrec_req.add_user_fea('user_id','u001d',"STRING")
+    torchrec_req.add_user_fea('age',12,"INT")
+    torchrec_req.add_user_fea('weight',129.8,"FLOAT")
+    torchrec_req.add_item_id('item_0001')
+    torchrec_req.add_item_id('item_0002')
+    torchrec_req.add_item_id('item_0003')
+    
+    res = client.predict(torchrec_req)
+    print(res)
+```
+
