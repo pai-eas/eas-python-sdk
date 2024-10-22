@@ -76,7 +76,7 @@ class TorchRecRequest(Request):
             
             elif dtype in ("MAP<INT64,INT>","MAP<BIGINT,INT>"):
                 map_v = feat.long_int_map.map_field
-            elif dtype in ("MAP<INT64,INT64>","MAP<BIGINT,BIGINT>"):
+            elif dtype in ("MAP<INT64,INT64>","MAP<BIGINT,BIGINT>","MAP<INT64,BIGINT>","MAP<BIGINT,INT64>"):
                 map_v = feat.long_long_map.map_field
             elif dtype in ("MAP<INT64,STRING>","MAP<BIGINT,STRING>"):
                 map_v = feat.long_string_map.map_field
