@@ -122,7 +122,11 @@ class TorchRecRequest(Request):
     def add_context_fea(self,k,value,dtype):
         feat=self.add_feat(value,dtype)
         self.request_data.context_features[k].features.add().CopyFrom(feat)
-                         
+    
+    def add_item_fea(self,k,value,dtype):
+        feat=self.add_feat(value,dtype)
+        self.request_data.item_features[k].features.add().CopyFrom(feat)
+               
     def add_item_id(self, k):
         self.request_data.item_ids.append(str(k))
     
