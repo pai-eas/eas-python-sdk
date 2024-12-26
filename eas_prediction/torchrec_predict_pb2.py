@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='com.alibaba.pairec.processor',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x16torchrec_predict.proto\x12\x1c\x63om.alibaba.pairec.processor\x1a\x15pytorch_predict.proto\"\x8e\x01\n\rLongStringMap\x12L\n\tmap_field\x18\x01 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.LongStringMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x88\x01\n\nLongIntMap\x12I\n\tmap_field\x18\x01 \x03(\x0b\x32\x36.com.alibaba.pairec.processor.LongIntMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x8a\x01\n\x0bLongLongMap\x12J\n\tmap_field\x18\x01 \x03(\x0b\x32\x37.com.alibaba.pairec.processor.LongLongMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x8c\x01\n\x0cLongFloatMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.LongFloatMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\"\x8e\x01\n\rLongDoubleMap\x12L\n\tmap_field\x18\x01 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.LongDoubleMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"\x92\x01\n\x0fStringStringMap\x12N\n\tmap_field\x18\x01 \x03(\x0b\x32;.com.alibaba.pairec.processor.StringStringMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x8c\x01\n\x0cStringIntMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.StringIntMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x8e\x01\n\rStringLongMap\x12L\n\tmap_field\x18\x01 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.StringLongMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x90\x01\n\x0eStringFloatMap\x12M\n\tmap_field\x18\x01 \x03(\x0b\x32:.com.alibaba.pairec.processor.StringFloatMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\"\x92\x01\n\x0fStringDoubleMap\x12N\n\tmap_field\x18\x01 \x03(\x0b\x32;.com.alibaba.pairec.processor.StringDoubleMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"\x8c\x01\n\x0cIntStringMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.IntStringMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x86\x01\n\tIntIntMap\x12H\n\tmap_field\x18\x01 \x03(\x0b\x32\x35.com.alibaba.pairec.processor.IntIntMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x88\x01\n\nIntLongMap\x12I\n\tmap_field\x18\x01 \x03(\x0b\x32\x36.com.alibaba.pairec.processor.IntLongMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x8a\x01\n\x0bIntFloatMap\x12J\n\tmap_field\x18\x01 \x03(\x0b\x32\x37.com.alibaba.pairec.processor.IntFloatMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\"\x8c\x01\n\x0cIntDoubleMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.IntDoubleMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"\x1b\n\x07IntList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x05\"\x1c\n\x08LongList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x03\"\x1d\n\tFloatList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x02\"\x1e\n\nDoubleList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x01\"\x1e\n\nStringList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\t\"@\n\x08IntLists\x12\x34\n\x05lists\x18\x01 \x03(\x0b\x32%.com.alibaba.pairec.processor.IntList\"B\n\tLongLists\x12\x35\n\x05lists\x18\x01 \x03(\x0b\x32&.com.alibaba.pairec.processor.LongList\"D\n\nFloatLists\x12\x36\n\x05lists\x18\x01 \x03(\x0b\x32\'.com.alibaba.pairec.processor.FloatList\"F\n\x0b\x44oubleLists\x12\x37\n\x05lists\x18\x01 \x03(\x0b\x32(.com.alibaba.pairec.processor.DoubleList\"F\n\x0bStringLists\x12\x37\n\x05lists\x18\x01 \x03(\x0b\x32(.com.alibaba.pairec.processor.StringList\"\xaa\x0e\n\tPBFeature\x12\x15\n\x0bint_feature\x18\x01 \x01(\x05H\x00\x12\x16\n\x0clong_feature\x18\x02 \x01(\x03H\x00\x12\x18\n\x0estring_feature\x18\x03 \x01(\tH\x00\x12\x17\n\rfloat_feature\x18\x04 \x01(\x02H\x00\x12\x18\n\x0e\x64ouble_feature\x18\x05 \x01(\x01H\x00\x12\x46\n\x0flong_string_map\x18\x06 \x01(\x0b\x32+.com.alibaba.pairec.processor.LongStringMapH\x00\x12@\n\x0clong_int_map\x18\x07 \x01(\x0b\x32(.com.alibaba.pairec.processor.LongIntMapH\x00\x12\x42\n\rlong_long_map\x18\x08 \x01(\x0b\x32).com.alibaba.pairec.processor.LongLongMapH\x00\x12\x44\n\x0elong_float_map\x18\t \x01(\x0b\x32*.com.alibaba.pairec.processor.LongFloatMapH\x00\x12\x46\n\x0flong_double_map\x18\n \x01(\x0b\x32+.com.alibaba.pairec.processor.LongDoubleMapH\x00\x12J\n\x11string_string_map\x18\x0b \x01(\x0b\x32-.com.alibaba.pairec.processor.StringStringMapH\x00\x12\x44\n\x0estring_int_map\x18\x0c \x01(\x0b\x32*.com.alibaba.pairec.processor.StringIntMapH\x00\x12\x46\n\x0fstring_long_map\x18\r \x01(\x0b\x32+.com.alibaba.pairec.processor.StringLongMapH\x00\x12H\n\x10string_float_map\x18\x0e \x01(\x0b\x32,.com.alibaba.pairec.processor.StringFloatMapH\x00\x12J\n\x11string_double_map\x18\x0f \x01(\x0b\x32-.com.alibaba.pairec.processor.StringDoubleMapH\x00\x12\x44\n\x0eint_string_map\x18\x10 \x01(\x0b\x32*.com.alibaba.pairec.processor.IntStringMapH\x00\x12>\n\x0bint_int_map\x18\x11 \x01(\x0b\x32\'.com.alibaba.pairec.processor.IntIntMapH\x00\x12@\n\x0cint_long_map\x18\x12 \x01(\x0b\x32(.com.alibaba.pairec.processor.IntLongMapH\x00\x12\x42\n\rint_float_map\x18\x13 \x01(\x0b\x32).com.alibaba.pairec.processor.IntFloatMapH\x00\x12\x44\n\x0eint_double_map\x18\x14 \x01(\x0b\x32*.com.alibaba.pairec.processor.IntDoubleMapH\x00\x12\x39\n\x08int_list\x18\x15 \x01(\x0b\x32%.com.alibaba.pairec.processor.IntListH\x00\x12;\n\tlong_list\x18\x16 \x01(\x0b\x32&.com.alibaba.pairec.processor.LongListH\x00\x12?\n\x0bstring_list\x18\x17 \x01(\x0b\x32(.com.alibaba.pairec.processor.StringListH\x00\x12=\n\nfloat_list\x18\x18 \x01(\x0b\x32\'.com.alibaba.pairec.processor.FloatListH\x00\x12?\n\x0b\x64ouble_list\x18\x19 \x01(\x0b\x32(.com.alibaba.pairec.processor.DoubleListH\x00\x12;\n\tint_lists\x18\x1a \x01(\x0b\x32&.com.alibaba.pairec.processor.IntListsH\x00\x12=\n\nlong_lists\x18\x1b \x01(\x0b\x32\'.com.alibaba.pairec.processor.LongListsH\x00\x12\x41\n\x0cstring_lists\x18\x1c \x01(\x0b\x32).com.alibaba.pairec.processor.StringListsH\x00\x12?\n\x0b\x66loat_lists\x18\x1d \x01(\x0b\x32(.com.alibaba.pairec.processor.FloatListsH\x00\x12\x41\n\x0c\x64ouble_lists\x18\x1e \x01(\x0b\x32).com.alibaba.pairec.processor.DoubleListsH\x00\x42\x07\n\x05value\"L\n\x0f\x43ontextFeatures\x12\x39\n\x08\x66\x65\x61tures\x18\x01 \x03(\x0b\x32\'.com.alibaba.pairec.processor.PBFeature\"\xba\x03\n\tPBRequest\x12\x13\n\x0b\x64\x65\x62ug_level\x18\x01 \x01(\x05\x12P\n\ruser_features\x18\x02 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.PBRequest.UserFeaturesEntry\x12\x10\n\x08item_ids\x18\x03 \x03(\t\x12V\n\x10\x63ontext_features\x18\x04 \x03(\x0b\x32<.com.alibaba.pairec.processor.PBRequest.ContextFeaturesEntry\x12\x17\n\x0f\x66\x61iss_neigh_num\x18\x05 \x01(\x05\x1a\\\n\x11UserFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x36\n\x05value\x18\x02 \x01(\x0b\x32\'.com.alibaba.pairec.processor.PBFeature:\x02\x38\x01\x1a\x65\n\x14\x43ontextFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12<\n\x05value\x18\x02 \x01(\x0b\x32-.com.alibaba.pairec.processor.ContextFeatures:\x02\x38\x01\"\xd2\x03\n\nPBResponse\x12M\n\x0bmap_outputs\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.PBResponse.MapOutputsEntry\x12Y\n\x11generate_features\x18\x02 \x03(\x0b\x32>.com.alibaba.pairec.processor.PBResponse.GenerateFeaturesEntry\x12O\n\x0craw_features\x18\x03 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.PBResponse.RawFeaturesEntry\x12\x10\n\x08item_ids\x18\x04 \x03(\t\x1aJ\n\x0fMapOutputsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.pytorch.eas.ArrayProto:\x02\x38\x01\x1a\x37\n\x15GenerateFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x32\n\x10RawFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x16torchrec_predict.proto\x12\x1c\x63om.alibaba.pairec.processor\x1a\x15pytorch_predict.proto\"\x8e\x01\n\rLongStringMap\x12L\n\tmap_field\x18\x01 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.LongStringMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x88\x01\n\nLongIntMap\x12I\n\tmap_field\x18\x01 \x03(\x0b\x32\x36.com.alibaba.pairec.processor.LongIntMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x8a\x01\n\x0bLongLongMap\x12J\n\tmap_field\x18\x01 \x03(\x0b\x32\x37.com.alibaba.pairec.processor.LongLongMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x8c\x01\n\x0cLongFloatMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.LongFloatMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\"\x8e\x01\n\rLongDoubleMap\x12L\n\tmap_field\x18\x01 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.LongDoubleMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"\x92\x01\n\x0fStringStringMap\x12N\n\tmap_field\x18\x01 \x03(\x0b\x32;.com.alibaba.pairec.processor.StringStringMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x8c\x01\n\x0cStringIntMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.StringIntMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x8e\x01\n\rStringLongMap\x12L\n\tmap_field\x18\x01 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.StringLongMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x90\x01\n\x0eStringFloatMap\x12M\n\tmap_field\x18\x01 \x03(\x0b\x32:.com.alibaba.pairec.processor.StringFloatMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\"\x92\x01\n\x0fStringDoubleMap\x12N\n\tmap_field\x18\x01 \x03(\x0b\x32;.com.alibaba.pairec.processor.StringDoubleMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"\x8c\x01\n\x0cIntStringMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.IntStringMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x86\x01\n\tIntIntMap\x12H\n\tmap_field\x18\x01 \x03(\x0b\x32\x35.com.alibaba.pairec.processor.IntIntMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x88\x01\n\nIntLongMap\x12I\n\tmap_field\x18\x01 \x03(\x0b\x32\x36.com.alibaba.pairec.processor.IntLongMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x8a\x01\n\x0bIntFloatMap\x12J\n\tmap_field\x18\x01 \x03(\x0b\x32\x37.com.alibaba.pairec.processor.IntFloatMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\"\x8c\x01\n\x0cIntDoubleMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.IntDoubleMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"\x1b\n\x07IntList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x05\"\x1c\n\x08LongList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x03\"\x1d\n\tFloatList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x02\"\x1e\n\nDoubleList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x01\"\x1e\n\nStringList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\t\"@\n\x08IntLists\x12\x34\n\x05lists\x18\x01 \x03(\x0b\x32%.com.alibaba.pairec.processor.IntList\"B\n\tLongLists\x12\x35\n\x05lists\x18\x01 \x03(\x0b\x32&.com.alibaba.pairec.processor.LongList\"D\n\nFloatLists\x12\x36\n\x05lists\x18\x01 \x03(\x0b\x32\'.com.alibaba.pairec.processor.FloatList\"F\n\x0b\x44oubleLists\x12\x37\n\x05lists\x18\x01 \x03(\x0b\x32(.com.alibaba.pairec.processor.DoubleList\"F\n\x0bStringLists\x12\x37\n\x05lists\x18\x01 \x03(\x0b\x32(.com.alibaba.pairec.processor.StringList\"\xaa\x0e\n\tPBFeature\x12\x15\n\x0bint_feature\x18\x01 \x01(\x05H\x00\x12\x16\n\x0clong_feature\x18\x02 \x01(\x03H\x00\x12\x18\n\x0estring_feature\x18\x03 \x01(\tH\x00\x12\x17\n\rfloat_feature\x18\x04 \x01(\x02H\x00\x12\x18\n\x0e\x64ouble_feature\x18\x05 \x01(\x01H\x00\x12\x46\n\x0flong_string_map\x18\x06 \x01(\x0b\x32+.com.alibaba.pairec.processor.LongStringMapH\x00\x12@\n\x0clong_int_map\x18\x07 \x01(\x0b\x32(.com.alibaba.pairec.processor.LongIntMapH\x00\x12\x42\n\rlong_long_map\x18\x08 \x01(\x0b\x32).com.alibaba.pairec.processor.LongLongMapH\x00\x12\x44\n\x0elong_float_map\x18\t \x01(\x0b\x32*.com.alibaba.pairec.processor.LongFloatMapH\x00\x12\x46\n\x0flong_double_map\x18\n \x01(\x0b\x32+.com.alibaba.pairec.processor.LongDoubleMapH\x00\x12J\n\x11string_string_map\x18\x0b \x01(\x0b\x32-.com.alibaba.pairec.processor.StringStringMapH\x00\x12\x44\n\x0estring_int_map\x18\x0c \x01(\x0b\x32*.com.alibaba.pairec.processor.StringIntMapH\x00\x12\x46\n\x0fstring_long_map\x18\r \x01(\x0b\x32+.com.alibaba.pairec.processor.StringLongMapH\x00\x12H\n\x10string_float_map\x18\x0e \x01(\x0b\x32,.com.alibaba.pairec.processor.StringFloatMapH\x00\x12J\n\x11string_double_map\x18\x0f \x01(\x0b\x32-.com.alibaba.pairec.processor.StringDoubleMapH\x00\x12\x44\n\x0eint_string_map\x18\x10 \x01(\x0b\x32*.com.alibaba.pairec.processor.IntStringMapH\x00\x12>\n\x0bint_int_map\x18\x11 \x01(\x0b\x32\'.com.alibaba.pairec.processor.IntIntMapH\x00\x12@\n\x0cint_long_map\x18\x12 \x01(\x0b\x32(.com.alibaba.pairec.processor.IntLongMapH\x00\x12\x42\n\rint_float_map\x18\x13 \x01(\x0b\x32).com.alibaba.pairec.processor.IntFloatMapH\x00\x12\x44\n\x0eint_double_map\x18\x14 \x01(\x0b\x32*.com.alibaba.pairec.processor.IntDoubleMapH\x00\x12\x39\n\x08int_list\x18\x15 \x01(\x0b\x32%.com.alibaba.pairec.processor.IntListH\x00\x12;\n\tlong_list\x18\x16 \x01(\x0b\x32&.com.alibaba.pairec.processor.LongListH\x00\x12?\n\x0bstring_list\x18\x17 \x01(\x0b\x32(.com.alibaba.pairec.processor.StringListH\x00\x12=\n\nfloat_list\x18\x18 \x01(\x0b\x32\'.com.alibaba.pairec.processor.FloatListH\x00\x12?\n\x0b\x64ouble_list\x18\x19 \x01(\x0b\x32(.com.alibaba.pairec.processor.DoubleListH\x00\x12;\n\tint_lists\x18\x1a \x01(\x0b\x32&.com.alibaba.pairec.processor.IntListsH\x00\x12=\n\nlong_lists\x18\x1b \x01(\x0b\x32\'.com.alibaba.pairec.processor.LongListsH\x00\x12\x41\n\x0cstring_lists\x18\x1c \x01(\x0b\x32).com.alibaba.pairec.processor.StringListsH\x00\x12?\n\x0b\x66loat_lists\x18\x1d \x01(\x0b\x32(.com.alibaba.pairec.processor.FloatListsH\x00\x12\x41\n\x0c\x64ouble_lists\x18\x1e \x01(\x0b\x32).com.alibaba.pairec.processor.DoubleListsH\x00\x42\x07\n\x05value\"L\n\x0f\x43ontextFeatures\x12\x39\n\x08\x66\x65\x61tures\x18\x01 \x03(\x0b\x32\'.com.alibaba.pairec.processor.PBFeature\"\xf0\x04\n\tPBRequest\x12\x13\n\x0b\x64\x65\x62ug_level\x18\x01 \x01(\x05\x12P\n\ruser_features\x18\x02 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.PBRequest.UserFeaturesEntry\x12\x10\n\x08item_ids\x18\x03 \x03(\t\x12V\n\x10\x63ontext_features\x18\x04 \x03(\x0b\x32<.com.alibaba.pairec.processor.PBRequest.ContextFeaturesEntry\x12\x17\n\x0f\x66\x61iss_neigh_num\x18\x05 \x01(\x05\x12P\n\ritem_features\x18\x06 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.PBRequest.ItemFeaturesEntry\x1a\\\n\x11UserFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x36\n\x05value\x18\x02 \x01(\x0b\x32\'.com.alibaba.pairec.processor.PBFeature:\x02\x38\x01\x1a\x65\n\x14\x43ontextFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12<\n\x05value\x18\x02 \x01(\x0b\x32-.com.alibaba.pairec.processor.ContextFeatures:\x02\x38\x01\x1a\x62\n\x11ItemFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12<\n\x05value\x18\x02 \x01(\x0b\x32-.com.alibaba.pairec.processor.ContextFeatures:\x02\x38\x01\"\xd2\x03\n\nPBResponse\x12M\n\x0bmap_outputs\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.PBResponse.MapOutputsEntry\x12Y\n\x11generate_features\x18\x02 \x03(\x0b\x32>.com.alibaba.pairec.processor.PBResponse.GenerateFeaturesEntry\x12O\n\x0craw_features\x18\x03 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.PBResponse.RawFeaturesEntry\x12\x10\n\x08item_ids\x18\x04 \x03(\t\x1aJ\n\x0fMapOutputsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.pytorch.eas.ArrayProto:\x02\x38\x01\x1a\x37\n\x15GenerateFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x32\n\x10RawFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x62\x06proto3')
   ,
   dependencies=[pytorch__predict__pb2.DESCRIPTOR,])
 
@@ -1658,8 +1658,8 @@ _PBREQUEST_USERFEATURESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4893,
-  serialized_end=4985,
+  serialized_start=4975,
+  serialized_end=5067,
 )
 
 _PBREQUEST_CONTEXTFEATURESENTRY = _descriptor.Descriptor(
@@ -1695,8 +1695,45 @@ _PBREQUEST_CONTEXTFEATURESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4987,
-  serialized_end=5088,
+  serialized_start=5069,
+  serialized_end=5170,
+)
+
+_PBREQUEST_ITEMFEATURESENTRY = _descriptor.Descriptor(
+  name='ItemFeaturesEntry',
+  full_name='com.alibaba.pairec.processor.PBRequest.ItemFeaturesEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='com.alibaba.pairec.processor.PBRequest.ItemFeaturesEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='com.alibaba.pairec.processor.PBRequest.ItemFeaturesEntry.value', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=_b('8\001'),
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=5172,
+  serialized_end=5270,
 )
 
 _PBREQUEST = _descriptor.Descriptor(
@@ -1741,10 +1778,17 @@ _PBREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='item_features', full_name='com.alibaba.pairec.processor.PBRequest.item_features', index=5,
+      number=6, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
-  nested_types=[_PBREQUEST_USERFEATURESENTRY, _PBREQUEST_CONTEXTFEATURESENTRY, ],
+  nested_types=[_PBREQUEST_USERFEATURESENTRY, _PBREQUEST_CONTEXTFEATURESENTRY, _PBREQUEST_ITEMFEATURESENTRY, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -1754,7 +1798,7 @@ _PBREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=4646,
-  serialized_end=5088,
+  serialized_end=5270,
 )
 
 
@@ -1791,8 +1835,8 @@ _PBRESPONSE_MAPOUTPUTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5374,
-  serialized_end=5448,
+  serialized_start=5556,
+  serialized_end=5630,
 )
 
 _PBRESPONSE_GENERATEFEATURESENTRY = _descriptor.Descriptor(
@@ -1828,8 +1872,8 @@ _PBRESPONSE_GENERATEFEATURESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5450,
-  serialized_end=5505,
+  serialized_start=5632,
+  serialized_end=5687,
 )
 
 _PBRESPONSE_RAWFEATURESENTRY = _descriptor.Descriptor(
@@ -1865,8 +1909,8 @@ _PBRESPONSE_RAWFEATURESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5507,
-  serialized_end=5557,
+  serialized_start=5689,
+  serialized_end=5739,
 )
 
 _PBRESPONSE = _descriptor.Descriptor(
@@ -1916,8 +1960,8 @@ _PBRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5091,
-  serialized_end=5557,
+  serialized_start=5273,
+  serialized_end=5739,
 )
 
 _LONGSTRINGMAP_MAPFIELDENTRY.containing_type = _LONGSTRINGMAP
@@ -2075,8 +2119,11 @@ _PBREQUEST_USERFEATURESENTRY.fields_by_name['value'].message_type = _PBFEATURE
 _PBREQUEST_USERFEATURESENTRY.containing_type = _PBREQUEST
 _PBREQUEST_CONTEXTFEATURESENTRY.fields_by_name['value'].message_type = _CONTEXTFEATURES
 _PBREQUEST_CONTEXTFEATURESENTRY.containing_type = _PBREQUEST
+_PBREQUEST_ITEMFEATURESENTRY.fields_by_name['value'].message_type = _CONTEXTFEATURES
+_PBREQUEST_ITEMFEATURESENTRY.containing_type = _PBREQUEST
 _PBREQUEST.fields_by_name['user_features'].message_type = _PBREQUEST_USERFEATURESENTRY
 _PBREQUEST.fields_by_name['context_features'].message_type = _PBREQUEST_CONTEXTFEATURESENTRY
+_PBREQUEST.fields_by_name['item_features'].message_type = _PBREQUEST_ITEMFEATURESENTRY
 _PBRESPONSE_MAPOUTPUTSENTRY.fields_by_name['value'].message_type = pytorch__predict__pb2._ARRAYPROTO
 _PBRESPONSE_MAPOUTPUTSENTRY.containing_type = _PBRESPONSE
 _PBRESPONSE_GENERATEFEATURESENTRY.containing_type = _PBRESPONSE
@@ -2439,6 +2486,13 @@ PBRequest = _reflection.GeneratedProtocolMessageType('PBRequest', (_message.Mess
     # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBRequest.ContextFeaturesEntry)
     ))
   ,
+
+  ItemFeaturesEntry = _reflection.GeneratedProtocolMessageType('ItemFeaturesEntry', (_message.Message,), dict(
+    DESCRIPTOR = _PBREQUEST_ITEMFEATURESENTRY,
+    __module__ = 'torchrec_predict_pb2'
+    # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBRequest.ItemFeaturesEntry)
+    ))
+  ,
   DESCRIPTOR = _PBREQUEST,
   __module__ = 'torchrec_predict_pb2'
   # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBRequest)
@@ -2446,6 +2500,7 @@ PBRequest = _reflection.GeneratedProtocolMessageType('PBRequest', (_message.Mess
 _sym_db.RegisterMessage(PBRequest)
 _sym_db.RegisterMessage(PBRequest.UserFeaturesEntry)
 _sym_db.RegisterMessage(PBRequest.ContextFeaturesEntry)
+_sym_db.RegisterMessage(PBRequest.ItemFeaturesEntry)
 
 PBResponse = _reflection.GeneratedProtocolMessageType('PBResponse', (_message.Message,), dict(
 
@@ -2496,6 +2551,7 @@ _INTFLOATMAP_MAPFIELDENTRY._options = None
 _INTDOUBLEMAP_MAPFIELDENTRY._options = None
 _PBREQUEST_USERFEATURESENTRY._options = None
 _PBREQUEST_CONTEXTFEATURESENTRY._options = None
+_PBREQUEST_ITEMFEATURESENTRY._options = None
 _PBRESPONSE_MAPOUTPUTSENTRY._options = None
 _PBRESPONSE_GENERATEFEATURESENTRY._options = None
 _PBRESPONSE_RAWFEATURESENTRY._options = None
