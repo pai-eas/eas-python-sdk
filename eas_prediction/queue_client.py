@@ -206,7 +206,7 @@ class QueueClient(PredictClient):
         """
         add identity info into headers
         """
-        headers = self.headers
+        headers = dict(self.headers)
         if len(self.content_type) > 0:
             headers.update({'Content-Type': self.content_type})
 
