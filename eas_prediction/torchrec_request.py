@@ -129,6 +129,9 @@ class TorchRecRequest(Request):
                
     def add_item_id(self, k):
         self.request_data.item_ids.append(str(k))
+
+    def add_meta_data(self, k, value):
+        self.request_data.meta_data[k].CopyFrom(value)
     
     def set_faiss_neigh_num(self, k):
         self.request_data.faiss_neigh_num = k
