@@ -7,6 +7,7 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -19,8 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='torchrec_predict.proto',
   package='com.alibaba.pairec.processor',
   syntax='proto3',
-  serialized_options=None,
-  serialized_pb=_b('\n\x16torchrec_predict.proto\x12\x1c\x63om.alibaba.pairec.processor\x1a\x15pytorch_predict.proto\"\x8e\x01\n\rLongStringMap\x12L\n\tmap_field\x18\x01 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.LongStringMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x88\x01\n\nLongIntMap\x12I\n\tmap_field\x18\x01 \x03(\x0b\x32\x36.com.alibaba.pairec.processor.LongIntMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x8a\x01\n\x0bLongLongMap\x12J\n\tmap_field\x18\x01 \x03(\x0b\x32\x37.com.alibaba.pairec.processor.LongLongMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x8c\x01\n\x0cLongFloatMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.LongFloatMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\"\x8e\x01\n\rLongDoubleMap\x12L\n\tmap_field\x18\x01 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.LongDoubleMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"\x92\x01\n\x0fStringStringMap\x12N\n\tmap_field\x18\x01 \x03(\x0b\x32;.com.alibaba.pairec.processor.StringStringMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x8c\x01\n\x0cStringIntMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.StringIntMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x8e\x01\n\rStringLongMap\x12L\n\tmap_field\x18\x01 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.StringLongMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x90\x01\n\x0eStringFloatMap\x12M\n\tmap_field\x18\x01 \x03(\x0b\x32:.com.alibaba.pairec.processor.StringFloatMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\"\x92\x01\n\x0fStringDoubleMap\x12N\n\tmap_field\x18\x01 \x03(\x0b\x32;.com.alibaba.pairec.processor.StringDoubleMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"\x8c\x01\n\x0cIntStringMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.IntStringMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x86\x01\n\tIntIntMap\x12H\n\tmap_field\x18\x01 \x03(\x0b\x32\x35.com.alibaba.pairec.processor.IntIntMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x88\x01\n\nIntLongMap\x12I\n\tmap_field\x18\x01 \x03(\x0b\x32\x36.com.alibaba.pairec.processor.IntLongMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x8a\x01\n\x0bIntFloatMap\x12J\n\tmap_field\x18\x01 \x03(\x0b\x32\x37.com.alibaba.pairec.processor.IntFloatMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\"\x8c\x01\n\x0cIntDoubleMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.IntDoubleMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"\x1b\n\x07IntList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x05\"\x1c\n\x08LongList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x03\"\x1d\n\tFloatList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x02\"\x1e\n\nDoubleList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x01\"\x1e\n\nStringList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\t\"@\n\x08IntLists\x12\x34\n\x05lists\x18\x01 \x03(\x0b\x32%.com.alibaba.pairec.processor.IntList\"B\n\tLongLists\x12\x35\n\x05lists\x18\x01 \x03(\x0b\x32&.com.alibaba.pairec.processor.LongList\"D\n\nFloatLists\x12\x36\n\x05lists\x18\x01 \x03(\x0b\x32\'.com.alibaba.pairec.processor.FloatList\"F\n\x0b\x44oubleLists\x12\x37\n\x05lists\x18\x01 \x03(\x0b\x32(.com.alibaba.pairec.processor.DoubleList\"F\n\x0bStringLists\x12\x37\n\x05lists\x18\x01 \x03(\x0b\x32(.com.alibaba.pairec.processor.StringList\"\xaa\x0e\n\tPBFeature\x12\x15\n\x0bint_feature\x18\x01 \x01(\x05H\x00\x12\x16\n\x0clong_feature\x18\x02 \x01(\x03H\x00\x12\x18\n\x0estring_feature\x18\x03 \x01(\tH\x00\x12\x17\n\rfloat_feature\x18\x04 \x01(\x02H\x00\x12\x18\n\x0e\x64ouble_feature\x18\x05 \x01(\x01H\x00\x12\x46\n\x0flong_string_map\x18\x06 \x01(\x0b\x32+.com.alibaba.pairec.processor.LongStringMapH\x00\x12@\n\x0clong_int_map\x18\x07 \x01(\x0b\x32(.com.alibaba.pairec.processor.LongIntMapH\x00\x12\x42\n\rlong_long_map\x18\x08 \x01(\x0b\x32).com.alibaba.pairec.processor.LongLongMapH\x00\x12\x44\n\x0elong_float_map\x18\t \x01(\x0b\x32*.com.alibaba.pairec.processor.LongFloatMapH\x00\x12\x46\n\x0flong_double_map\x18\n \x01(\x0b\x32+.com.alibaba.pairec.processor.LongDoubleMapH\x00\x12J\n\x11string_string_map\x18\x0b \x01(\x0b\x32-.com.alibaba.pairec.processor.StringStringMapH\x00\x12\x44\n\x0estring_int_map\x18\x0c \x01(\x0b\x32*.com.alibaba.pairec.processor.StringIntMapH\x00\x12\x46\n\x0fstring_long_map\x18\r \x01(\x0b\x32+.com.alibaba.pairec.processor.StringLongMapH\x00\x12H\n\x10string_float_map\x18\x0e \x01(\x0b\x32,.com.alibaba.pairec.processor.StringFloatMapH\x00\x12J\n\x11string_double_map\x18\x0f \x01(\x0b\x32-.com.alibaba.pairec.processor.StringDoubleMapH\x00\x12\x44\n\x0eint_string_map\x18\x10 \x01(\x0b\x32*.com.alibaba.pairec.processor.IntStringMapH\x00\x12>\n\x0bint_int_map\x18\x11 \x01(\x0b\x32\'.com.alibaba.pairec.processor.IntIntMapH\x00\x12@\n\x0cint_long_map\x18\x12 \x01(\x0b\x32(.com.alibaba.pairec.processor.IntLongMapH\x00\x12\x42\n\rint_float_map\x18\x13 \x01(\x0b\x32).com.alibaba.pairec.processor.IntFloatMapH\x00\x12\x44\n\x0eint_double_map\x18\x14 \x01(\x0b\x32*.com.alibaba.pairec.processor.IntDoubleMapH\x00\x12\x39\n\x08int_list\x18\x15 \x01(\x0b\x32%.com.alibaba.pairec.processor.IntListH\x00\x12;\n\tlong_list\x18\x16 \x01(\x0b\x32&.com.alibaba.pairec.processor.LongListH\x00\x12?\n\x0bstring_list\x18\x17 \x01(\x0b\x32(.com.alibaba.pairec.processor.StringListH\x00\x12=\n\nfloat_list\x18\x18 \x01(\x0b\x32\'.com.alibaba.pairec.processor.FloatListH\x00\x12?\n\x0b\x64ouble_list\x18\x19 \x01(\x0b\x32(.com.alibaba.pairec.processor.DoubleListH\x00\x12;\n\tint_lists\x18\x1a \x01(\x0b\x32&.com.alibaba.pairec.processor.IntListsH\x00\x12=\n\nlong_lists\x18\x1b \x01(\x0b\x32\'.com.alibaba.pairec.processor.LongListsH\x00\x12\x41\n\x0cstring_lists\x18\x1c \x01(\x0b\x32).com.alibaba.pairec.processor.StringListsH\x00\x12?\n\x0b\x66loat_lists\x18\x1d \x01(\x0b\x32(.com.alibaba.pairec.processor.FloatListsH\x00\x12\x41\n\x0c\x64ouble_lists\x18\x1e \x01(\x0b\x32).com.alibaba.pairec.processor.DoubleListsH\x00\x42\x07\n\x05value\"L\n\x0f\x43ontextFeatures\x12\x39\n\x08\x66\x65\x61tures\x18\x01 \x03(\x0b\x32\'.com.alibaba.pairec.processor.PBFeature\"\xf0\x04\n\tPBRequest\x12\x13\n\x0b\x64\x65\x62ug_level\x18\x01 \x01(\x05\x12P\n\ruser_features\x18\x02 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.PBRequest.UserFeaturesEntry\x12\x10\n\x08item_ids\x18\x03 \x03(\t\x12V\n\x10\x63ontext_features\x18\x04 \x03(\x0b\x32<.com.alibaba.pairec.processor.PBRequest.ContextFeaturesEntry\x12\x17\n\x0f\x66\x61iss_neigh_num\x18\x05 \x01(\x05\x12P\n\ritem_features\x18\x06 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.PBRequest.ItemFeaturesEntry\x1a\\\n\x11UserFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x36\n\x05value\x18\x02 \x01(\x0b\x32\'.com.alibaba.pairec.processor.PBFeature:\x02\x38\x01\x1a\x65\n\x14\x43ontextFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12<\n\x05value\x18\x02 \x01(\x0b\x32-.com.alibaba.pairec.processor.ContextFeatures:\x02\x38\x01\x1a\x62\n\x11ItemFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12<\n\x05value\x18\x02 \x01(\x0b\x32-.com.alibaba.pairec.processor.ContextFeatures:\x02\x38\x01\"\xd2\x03\n\nPBResponse\x12M\n\x0bmap_outputs\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.PBResponse.MapOutputsEntry\x12Y\n\x11generate_features\x18\x02 \x03(\x0b\x32>.com.alibaba.pairec.processor.PBResponse.GenerateFeaturesEntry\x12O\n\x0craw_features\x18\x03 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.PBResponse.RawFeaturesEntry\x12\x10\n\x08item_ids\x18\x04 \x03(\t\x1aJ\n\x0fMapOutputsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.pytorch.eas.ArrayProto:\x02\x38\x01\x1a\x37\n\x15GenerateFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x32\n\x10RawFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x16torchrec_predict.proto\x12\x1c\x63om.alibaba.pairec.processor\x1a\x15pytorch_predict.proto\"\x8e\x01\n\rLongStringMap\x12L\n\tmap_field\x18\x01 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.LongStringMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x88\x01\n\nLongIntMap\x12I\n\tmap_field\x18\x01 \x03(\x0b\x32\x36.com.alibaba.pairec.processor.LongIntMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x8a\x01\n\x0bLongLongMap\x12J\n\tmap_field\x18\x01 \x03(\x0b\x32\x37.com.alibaba.pairec.processor.LongLongMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x8c\x01\n\x0cLongFloatMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.LongFloatMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\"\x8e\x01\n\rLongDoubleMap\x12L\n\tmap_field\x18\x01 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.LongDoubleMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"\x92\x01\n\x0fStringStringMap\x12N\n\tmap_field\x18\x01 \x03(\x0b\x32;.com.alibaba.pairec.processor.StringStringMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x8c\x01\n\x0cStringIntMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.StringIntMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x8e\x01\n\rStringLongMap\x12L\n\tmap_field\x18\x01 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.StringLongMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x90\x01\n\x0eStringFloatMap\x12M\n\tmap_field\x18\x01 \x03(\x0b\x32:.com.alibaba.pairec.processor.StringFloatMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\"\x92\x01\n\x0fStringDoubleMap\x12N\n\tmap_field\x18\x01 \x03(\x0b\x32;.com.alibaba.pairec.processor.StringDoubleMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"\x8c\x01\n\x0cIntStringMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.IntStringMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x86\x01\n\tIntIntMap\x12H\n\tmap_field\x18\x01 \x03(\x0b\x32\x35.com.alibaba.pairec.processor.IntIntMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x88\x01\n\nIntLongMap\x12I\n\tmap_field\x18\x01 \x03(\x0b\x32\x36.com.alibaba.pairec.processor.IntLongMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x8a\x01\n\x0bIntFloatMap\x12J\n\tmap_field\x18\x01 \x03(\x0b\x32\x37.com.alibaba.pairec.processor.IntFloatMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\"\x8c\x01\n\x0cIntDoubleMap\x12K\n\tmap_field\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.IntDoubleMap.MapFieldEntry\x1a/\n\rMapFieldEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"\x1b\n\x07IntList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x05\"\x1c\n\x08LongList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x03\"\x1d\n\tFloatList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x02\"\x1e\n\nDoubleList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\x01\"\x1e\n\nStringList\x12\x10\n\x08\x66\x65\x61tures\x18\x01 \x03(\t\"@\n\x08IntLists\x12\x34\n\x05lists\x18\x01 \x03(\x0b\x32%.com.alibaba.pairec.processor.IntList\"B\n\tLongLists\x12\x35\n\x05lists\x18\x01 \x03(\x0b\x32&.com.alibaba.pairec.processor.LongList\"D\n\nFloatLists\x12\x36\n\x05lists\x18\x01 \x03(\x0b\x32\'.com.alibaba.pairec.processor.FloatList\"F\n\x0b\x44oubleLists\x12\x37\n\x05lists\x18\x01 \x03(\x0b\x32(.com.alibaba.pairec.processor.DoubleList\"F\n\x0bStringLists\x12\x37\n\x05lists\x18\x01 \x03(\x0b\x32(.com.alibaba.pairec.processor.StringList\"\xaa\x0e\n\tPBFeature\x12\x15\n\x0bint_feature\x18\x01 \x01(\x05H\x00\x12\x16\n\x0clong_feature\x18\x02 \x01(\x03H\x00\x12\x18\n\x0estring_feature\x18\x03 \x01(\tH\x00\x12\x17\n\rfloat_feature\x18\x04 \x01(\x02H\x00\x12\x18\n\x0e\x64ouble_feature\x18\x05 \x01(\x01H\x00\x12\x46\n\x0flong_string_map\x18\x06 \x01(\x0b\x32+.com.alibaba.pairec.processor.LongStringMapH\x00\x12@\n\x0clong_int_map\x18\x07 \x01(\x0b\x32(.com.alibaba.pairec.processor.LongIntMapH\x00\x12\x42\n\rlong_long_map\x18\x08 \x01(\x0b\x32).com.alibaba.pairec.processor.LongLongMapH\x00\x12\x44\n\x0elong_float_map\x18\t \x01(\x0b\x32*.com.alibaba.pairec.processor.LongFloatMapH\x00\x12\x46\n\x0flong_double_map\x18\n \x01(\x0b\x32+.com.alibaba.pairec.processor.LongDoubleMapH\x00\x12J\n\x11string_string_map\x18\x0b \x01(\x0b\x32-.com.alibaba.pairec.processor.StringStringMapH\x00\x12\x44\n\x0estring_int_map\x18\x0c \x01(\x0b\x32*.com.alibaba.pairec.processor.StringIntMapH\x00\x12\x46\n\x0fstring_long_map\x18\r \x01(\x0b\x32+.com.alibaba.pairec.processor.StringLongMapH\x00\x12H\n\x10string_float_map\x18\x0e \x01(\x0b\x32,.com.alibaba.pairec.processor.StringFloatMapH\x00\x12J\n\x11string_double_map\x18\x0f \x01(\x0b\x32-.com.alibaba.pairec.processor.StringDoubleMapH\x00\x12\x44\n\x0eint_string_map\x18\x10 \x01(\x0b\x32*.com.alibaba.pairec.processor.IntStringMapH\x00\x12>\n\x0bint_int_map\x18\x11 \x01(\x0b\x32\'.com.alibaba.pairec.processor.IntIntMapH\x00\x12@\n\x0cint_long_map\x18\x12 \x01(\x0b\x32(.com.alibaba.pairec.processor.IntLongMapH\x00\x12\x42\n\rint_float_map\x18\x13 \x01(\x0b\x32).com.alibaba.pairec.processor.IntFloatMapH\x00\x12\x44\n\x0eint_double_map\x18\x14 \x01(\x0b\x32*.com.alibaba.pairec.processor.IntDoubleMapH\x00\x12\x39\n\x08int_list\x18\x15 \x01(\x0b\x32%.com.alibaba.pairec.processor.IntListH\x00\x12;\n\tlong_list\x18\x16 \x01(\x0b\x32&.com.alibaba.pairec.processor.LongListH\x00\x12?\n\x0bstring_list\x18\x17 \x01(\x0b\x32(.com.alibaba.pairec.processor.StringListH\x00\x12=\n\nfloat_list\x18\x18 \x01(\x0b\x32\'.com.alibaba.pairec.processor.FloatListH\x00\x12?\n\x0b\x64ouble_list\x18\x19 \x01(\x0b\x32(.com.alibaba.pairec.processor.DoubleListH\x00\x12;\n\tint_lists\x18\x1a \x01(\x0b\x32&.com.alibaba.pairec.processor.IntListsH\x00\x12=\n\nlong_lists\x18\x1b \x01(\x0b\x32\'.com.alibaba.pairec.processor.LongListsH\x00\x12\x41\n\x0cstring_lists\x18\x1c \x01(\x0b\x32).com.alibaba.pairec.processor.StringListsH\x00\x12?\n\x0b\x66loat_lists\x18\x1d \x01(\x0b\x32(.com.alibaba.pairec.processor.FloatListsH\x00\x12\x41\n\x0c\x64ouble_lists\x18\x1e \x01(\x0b\x32).com.alibaba.pairec.processor.DoubleListsH\x00\x42\x07\n\x05value\"L\n\x0f\x43ontextFeatures\x12\x39\n\x08\x66\x65\x61tures\x18\x01 \x03(\x0b\x32\'.com.alibaba.pairec.processor.PBFeature\"\xeb\x05\n\tPBRequest\x12\x13\n\x0b\x64\x65\x62ug_level\x18\x01 \x01(\x05\x12P\n\ruser_features\x18\x02 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.PBRequest.UserFeaturesEntry\x12\x10\n\x08item_ids\x18\x03 \x03(\t\x12V\n\x10\x63ontext_features\x18\x04 \x03(\x0b\x32<.com.alibaba.pairec.processor.PBRequest.ContextFeaturesEntry\x12\x17\n\x0f\x66\x61iss_neigh_num\x18\x05 \x01(\x05\x12P\n\ritem_features\x18\x06 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.PBRequest.ItemFeaturesEntry\x12H\n\tmeta_data\x18\x07 \x03(\x0b\x32\x35.com.alibaba.pairec.processor.PBRequest.MetaDataEntry\x1a\\\n\x11UserFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x36\n\x05value\x18\x02 \x01(\x0b\x32\'.com.alibaba.pairec.processor.PBFeature:\x02\x38\x01\x1a\x65\n\x14\x43ontextFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12<\n\x05value\x18\x02 \x01(\x0b\x32-.com.alibaba.pairec.processor.ContextFeatures:\x02\x38\x01\x1a\x62\n\x11ItemFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12<\n\x05value\x18\x02 \x01(\x0b\x32-.com.alibaba.pairec.processor.ContextFeatures:\x02\x38\x01\x1a/\n\rMetaDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xd2\x03\n\nPBResponse\x12M\n\x0bmap_outputs\x18\x01 \x03(\x0b\x32\x38.com.alibaba.pairec.processor.PBResponse.MapOutputsEntry\x12Y\n\x11generate_features\x18\x02 \x03(\x0b\x32>.com.alibaba.pairec.processor.PBResponse.GenerateFeaturesEntry\x12O\n\x0craw_features\x18\x03 \x03(\x0b\x32\x39.com.alibaba.pairec.processor.PBResponse.RawFeaturesEntry\x12\x10\n\x08item_ids\x18\x04 \x03(\t\x1aJ\n\x0fMapOutputsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.pytorch.eas.ArrayProto:\x02\x38\x01\x1a\x37\n\x15GenerateFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x32\n\x10RawFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42Z\n)com.aliyun.openservices.eas.predict.protoB\x15TorchRecPredictProtosZ\x16.;torch_predict_protosb\x06proto3')
   ,
   dependencies=[pytorch__predict__pb2.DESCRIPTOR,])
 
@@ -40,21 +40,21 @@ _LONGSTRINGMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.LongStringMap.MapFieldEntry.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -77,14 +77,14 @@ _LONGSTRINGMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_LONGSTRINGMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -108,21 +108,21 @@ _LONGINTMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.LongIntMap.MapFieldEntry.value', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -145,14 +145,14 @@ _LONGINTMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_LONGINTMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -176,21 +176,21 @@ _LONGLONGMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.LongLongMap.MapFieldEntry.value', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -213,14 +213,14 @@ _LONGLONGMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_LONGLONGMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -244,21 +244,21 @@ _LONGFLOATMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.LongFloatMap.MapFieldEntry.value', index=1,
       number=2, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -281,14 +281,14 @@ _LONGFLOATMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_LONGFLOATMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -312,21 +312,21 @@ _LONGDOUBLEMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.LongDoubleMap.MapFieldEntry.value', index=1,
       number=2, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -349,14 +349,14 @@ _LONGDOUBLEMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_LONGDOUBLEMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -380,21 +380,21 @@ _STRINGSTRINGMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.StringStringMap.MapFieldEntry.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -417,14 +417,14 @@ _STRINGSTRINGMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_STRINGSTRINGMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -448,21 +448,21 @@ _STRINGINTMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.StringIntMap.MapFieldEntry.value', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -485,14 +485,14 @@ _STRINGINTMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_STRINGINTMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -516,21 +516,21 @@ _STRINGLONGMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.StringLongMap.MapFieldEntry.value', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -553,14 +553,14 @@ _STRINGLONGMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_STRINGLONGMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -584,21 +584,21 @@ _STRINGFLOATMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.StringFloatMap.MapFieldEntry.value', index=1,
       number=2, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -621,14 +621,14 @@ _STRINGFLOATMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_STRINGFLOATMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -652,21 +652,21 @@ _STRINGDOUBLEMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.StringDoubleMap.MapFieldEntry.value', index=1,
       number=2, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -689,14 +689,14 @@ _STRINGDOUBLEMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_STRINGDOUBLEMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -720,21 +720,21 @@ _INTSTRINGMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.IntStringMap.MapFieldEntry.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -757,14 +757,14 @@ _INTSTRINGMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_INTSTRINGMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -788,21 +788,21 @@ _INTINTMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.IntIntMap.MapFieldEntry.value', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -825,14 +825,14 @@ _INTINTMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_INTINTMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -856,21 +856,21 @@ _INTLONGMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.IntLongMap.MapFieldEntry.value', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -893,14 +893,14 @@ _INTLONGMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_INTLONGMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -924,21 +924,21 @@ _INTFLOATMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.IntFloatMap.MapFieldEntry.value', index=1,
       number=2, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -961,14 +961,14 @@ _INTFLOATMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_INTFLOATMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -992,21 +992,21 @@ _INTDOUBLEMAP_MAPFIELDENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.IntDoubleMap.MapFieldEntry.value', index=1,
       number=2, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -1029,14 +1029,14 @@ _INTDOUBLEMAP = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_INTDOUBLEMAP_MAPFIELDENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -1060,14 +1060,14 @@ _INTLIST = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -1091,14 +1091,14 @@ _LONGLIST = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -1122,14 +1122,14 @@ _FLOATLIST = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -1153,14 +1153,14 @@ _DOUBLELIST = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -1184,14 +1184,14 @@ _STRINGLIST = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -1215,14 +1215,14 @@ _INTLISTS = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -1246,14 +1246,14 @@ _LONGLISTS = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -1277,14 +1277,14 @@ _FLOATLISTS = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -1308,14 +1308,14 @@ _DOUBLELISTS = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -1339,14 +1339,14 @@ _STRINGLISTS = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -1370,217 +1370,217 @@ _PBFEATURE = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='long_feature', full_name='com.alibaba.pairec.processor.PBFeature.long_feature', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='string_feature', full_name='com.alibaba.pairec.processor.PBFeature.string_feature', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='float_feature', full_name='com.alibaba.pairec.processor.PBFeature.float_feature', index=3,
       number=4, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='double_feature', full_name='com.alibaba.pairec.processor.PBFeature.double_feature', index=4,
       number=5, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='long_string_map', full_name='com.alibaba.pairec.processor.PBFeature.long_string_map', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='long_int_map', full_name='com.alibaba.pairec.processor.PBFeature.long_int_map', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='long_long_map', full_name='com.alibaba.pairec.processor.PBFeature.long_long_map', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='long_float_map', full_name='com.alibaba.pairec.processor.PBFeature.long_float_map', index=8,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='long_double_map', full_name='com.alibaba.pairec.processor.PBFeature.long_double_map', index=9,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='string_string_map', full_name='com.alibaba.pairec.processor.PBFeature.string_string_map', index=10,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='string_int_map', full_name='com.alibaba.pairec.processor.PBFeature.string_int_map', index=11,
       number=12, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='string_long_map', full_name='com.alibaba.pairec.processor.PBFeature.string_long_map', index=12,
       number=13, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='string_float_map', full_name='com.alibaba.pairec.processor.PBFeature.string_float_map', index=13,
       number=14, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='string_double_map', full_name='com.alibaba.pairec.processor.PBFeature.string_double_map', index=14,
       number=15, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='int_string_map', full_name='com.alibaba.pairec.processor.PBFeature.int_string_map', index=15,
       number=16, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='int_int_map', full_name='com.alibaba.pairec.processor.PBFeature.int_int_map', index=16,
       number=17, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='int_long_map', full_name='com.alibaba.pairec.processor.PBFeature.int_long_map', index=17,
       number=18, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='int_float_map', full_name='com.alibaba.pairec.processor.PBFeature.int_float_map', index=18,
       number=19, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='int_double_map', full_name='com.alibaba.pairec.processor.PBFeature.int_double_map', index=19,
       number=20, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='int_list', full_name='com.alibaba.pairec.processor.PBFeature.int_list', index=20,
       number=21, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='long_list', full_name='com.alibaba.pairec.processor.PBFeature.long_list', index=21,
       number=22, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='string_list', full_name='com.alibaba.pairec.processor.PBFeature.string_list', index=22,
       number=23, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='float_list', full_name='com.alibaba.pairec.processor.PBFeature.float_list', index=23,
       number=24, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='double_list', full_name='com.alibaba.pairec.processor.PBFeature.double_list', index=24,
       number=25, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='int_lists', full_name='com.alibaba.pairec.processor.PBFeature.int_lists', index=25,
       number=26, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='long_lists', full_name='com.alibaba.pairec.processor.PBFeature.long_lists', index=26,
       number=27, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='string_lists', full_name='com.alibaba.pairec.processor.PBFeature.string_lists', index=27,
       number=28, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='float_lists', full_name='com.alibaba.pairec.processor.PBFeature.float_lists', index=28,
       number=29, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='double_lists', full_name='com.alibaba.pairec.processor.PBFeature.double_lists', index=29,
       number=30, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -1607,14 +1607,14 @@ _CONTEXTFEATURES = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -1638,28 +1638,28 @@ _PBREQUEST_USERFEATURESENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.PBRequest.UserFeaturesEntry.value', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4975,
-  serialized_end=5067,
+  serialized_start=5049,
+  serialized_end=5141,
 )
 
 _PBREQUEST_CONTEXTFEATURESENTRY = _descriptor.Descriptor(
@@ -1675,28 +1675,28 @@ _PBREQUEST_CONTEXTFEATURESENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.PBRequest.ContextFeaturesEntry.value', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5069,
-  serialized_end=5170,
+  serialized_start=5143,
+  serialized_end=5244,
 )
 
 _PBREQUEST_ITEMFEATURESENTRY = _descriptor.Descriptor(
@@ -1712,28 +1712,65 @@ _PBREQUEST_ITEMFEATURESENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.PBRequest.ItemFeaturesEntry.value', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5172,
-  serialized_end=5270,
+  serialized_start=5246,
+  serialized_end=5344,
+)
+
+_PBREQUEST_METADATAENTRY = _descriptor.Descriptor(
+  name='MetaDataEntry',
+  full_name='com.alibaba.pairec.processor.PBRequest.MetaDataEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='com.alibaba.pairec.processor.PBRequest.MetaDataEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='com.alibaba.pairec.processor.PBRequest.MetaDataEntry.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=5346,
+  serialized_end=5393,
 )
 
 _PBREQUEST = _descriptor.Descriptor(
@@ -1749,56 +1786,63 @@ _PBREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='user_features', full_name='com.alibaba.pairec.processor.PBRequest.user_features', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='item_ids', full_name='com.alibaba.pairec.processor.PBRequest.item_ids', index=2,
       number=3, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='context_features', full_name='com.alibaba.pairec.processor.PBRequest.context_features', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='faiss_neigh_num', full_name='com.alibaba.pairec.processor.PBRequest.faiss_neigh_num', index=4,
       number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='item_features', full_name='com.alibaba.pairec.processor.PBRequest.item_features', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='meta_data', full_name='com.alibaba.pairec.processor.PBRequest.meta_data', index=6,
+      number=7, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
-  nested_types=[_PBREQUEST_USERFEATURESENTRY, _PBREQUEST_CONTEXTFEATURESENTRY, _PBREQUEST_ITEMFEATURESENTRY, ],
+  nested_types=[_PBREQUEST_USERFEATURESENTRY, _PBREQUEST_CONTEXTFEATURESENTRY, _PBREQUEST_ITEMFEATURESENTRY, _PBREQUEST_METADATAENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=4646,
-  serialized_end=5270,
+  serialized_end=5393,
 )
 
 
@@ -1815,28 +1859,28 @@ _PBRESPONSE_MAPOUTPUTSENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.PBResponse.MapOutputsEntry.value', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5556,
-  serialized_end=5630,
+  serialized_start=5679,
+  serialized_end=5753,
 )
 
 _PBRESPONSE_GENERATEFEATURESENTRY = _descriptor.Descriptor(
@@ -1852,28 +1896,28 @@ _PBRESPONSE_GENERATEFEATURESENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.PBResponse.GenerateFeaturesEntry.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5632,
-  serialized_end=5687,
+  serialized_start=5755,
+  serialized_end=5810,
 )
 
 _PBRESPONSE_RAWFEATURESENTRY = _descriptor.Descriptor(
@@ -1889,28 +1933,28 @@ _PBRESPONSE_RAWFEATURESENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='com.alibaba.pairec.processor.PBResponse.RawFeaturesEntry.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5689,
-  serialized_end=5739,
+  serialized_start=5812,
+  serialized_end=5862,
 )
 
 _PBRESPONSE = _descriptor.Descriptor(
@@ -1926,42 +1970,42 @@ _PBRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='generate_features', full_name='com.alibaba.pairec.processor.PBResponse.generate_features', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='raw_features', full_name='com.alibaba.pairec.processor.PBResponse.raw_features', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='item_ids', full_name='com.alibaba.pairec.processor.PBResponse.item_ids', index=3,
       number=4, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_PBRESPONSE_MAPOUTPUTSENTRY, _PBRESPONSE_GENERATEFEATURESENTRY, _PBRESPONSE_RAWFEATURESENTRY, ],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5273,
-  serialized_end=5739,
+  serialized_start=5396,
+  serialized_end=5862,
 )
 
 _LONGSTRINGMAP_MAPFIELDENTRY.containing_type = _LONGSTRINGMAP
@@ -2121,9 +2165,11 @@ _PBREQUEST_CONTEXTFEATURESENTRY.fields_by_name['value'].message_type = _CONTEXTF
 _PBREQUEST_CONTEXTFEATURESENTRY.containing_type = _PBREQUEST
 _PBREQUEST_ITEMFEATURESENTRY.fields_by_name['value'].message_type = _CONTEXTFEATURES
 _PBREQUEST_ITEMFEATURESENTRY.containing_type = _PBREQUEST
+_PBREQUEST_METADATAENTRY.containing_type = _PBREQUEST
 _PBREQUEST.fields_by_name['user_features'].message_type = _PBREQUEST_USERFEATURESENTRY
 _PBREQUEST.fields_by_name['context_features'].message_type = _PBREQUEST_CONTEXTFEATURESENTRY
 _PBREQUEST.fields_by_name['item_features'].message_type = _PBREQUEST_ITEMFEATURESENTRY
+_PBREQUEST.fields_by_name['meta_data'].message_type = _PBREQUEST_METADATAENTRY
 _PBRESPONSE_MAPOUTPUTSENTRY.fields_by_name['value'].message_type = pytorch__predict__pb2._ARRAYPROTO
 _PBRESPONSE_MAPOUTPUTSENTRY.containing_type = _PBRESPONSE
 _PBRESPONSE_GENERATEFEATURESENTRY.containing_type = _PBRESPONSE
@@ -2493,6 +2539,13 @@ PBRequest = _reflection.GeneratedProtocolMessageType('PBRequest', (_message.Mess
     # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBRequest.ItemFeaturesEntry)
     ))
   ,
+
+  MetaDataEntry = _reflection.GeneratedProtocolMessageType('MetaDataEntry', (_message.Message,), dict(
+    DESCRIPTOR = _PBREQUEST_METADATAENTRY,
+    __module__ = 'torchrec_predict_pb2'
+    # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBRequest.MetaDataEntry)
+    ))
+  ,
   DESCRIPTOR = _PBREQUEST,
   __module__ = 'torchrec_predict_pb2'
   # @@protoc_insertion_point(class_scope:com.alibaba.pairec.processor.PBRequest)
@@ -2501,6 +2554,7 @@ _sym_db.RegisterMessage(PBRequest)
 _sym_db.RegisterMessage(PBRequest.UserFeaturesEntry)
 _sym_db.RegisterMessage(PBRequest.ContextFeaturesEntry)
 _sym_db.RegisterMessage(PBRequest.ItemFeaturesEntry)
+_sym_db.RegisterMessage(PBRequest.MetaDataEntry)
 
 PBResponse = _reflection.GeneratedProtocolMessageType('PBResponse', (_message.Message,), dict(
 
@@ -2534,25 +2588,50 @@ _sym_db.RegisterMessage(PBResponse.GenerateFeaturesEntry)
 _sym_db.RegisterMessage(PBResponse.RawFeaturesEntry)
 
 
-_LONGSTRINGMAP_MAPFIELDENTRY._options = None
-_LONGINTMAP_MAPFIELDENTRY._options = None
-_LONGLONGMAP_MAPFIELDENTRY._options = None
-_LONGFLOATMAP_MAPFIELDENTRY._options = None
-_LONGDOUBLEMAP_MAPFIELDENTRY._options = None
-_STRINGSTRINGMAP_MAPFIELDENTRY._options = None
-_STRINGINTMAP_MAPFIELDENTRY._options = None
-_STRINGLONGMAP_MAPFIELDENTRY._options = None
-_STRINGFLOATMAP_MAPFIELDENTRY._options = None
-_STRINGDOUBLEMAP_MAPFIELDENTRY._options = None
-_INTSTRINGMAP_MAPFIELDENTRY._options = None
-_INTINTMAP_MAPFIELDENTRY._options = None
-_INTLONGMAP_MAPFIELDENTRY._options = None
-_INTFLOATMAP_MAPFIELDENTRY._options = None
-_INTDOUBLEMAP_MAPFIELDENTRY._options = None
-_PBREQUEST_USERFEATURESENTRY._options = None
-_PBREQUEST_CONTEXTFEATURESENTRY._options = None
-_PBREQUEST_ITEMFEATURESENTRY._options = None
-_PBRESPONSE_MAPOUTPUTSENTRY._options = None
-_PBRESPONSE_GENERATEFEATURESENTRY._options = None
-_PBRESPONSE_RAWFEATURESENTRY._options = None
+DESCRIPTOR.has_options = True
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n)com.aliyun.openservices.eas.predict.protoB\025TorchRecPredictProtosZ\026.;torch_predict_protos'))
+_LONGSTRINGMAP_MAPFIELDENTRY.has_options = True
+_LONGSTRINGMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_LONGINTMAP_MAPFIELDENTRY.has_options = True
+_LONGINTMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_LONGLONGMAP_MAPFIELDENTRY.has_options = True
+_LONGLONGMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_LONGFLOATMAP_MAPFIELDENTRY.has_options = True
+_LONGFLOATMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_LONGDOUBLEMAP_MAPFIELDENTRY.has_options = True
+_LONGDOUBLEMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_STRINGSTRINGMAP_MAPFIELDENTRY.has_options = True
+_STRINGSTRINGMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_STRINGINTMAP_MAPFIELDENTRY.has_options = True
+_STRINGINTMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_STRINGLONGMAP_MAPFIELDENTRY.has_options = True
+_STRINGLONGMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_STRINGFLOATMAP_MAPFIELDENTRY.has_options = True
+_STRINGFLOATMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_STRINGDOUBLEMAP_MAPFIELDENTRY.has_options = True
+_STRINGDOUBLEMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_INTSTRINGMAP_MAPFIELDENTRY.has_options = True
+_INTSTRINGMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_INTINTMAP_MAPFIELDENTRY.has_options = True
+_INTINTMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_INTLONGMAP_MAPFIELDENTRY.has_options = True
+_INTLONGMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_INTFLOATMAP_MAPFIELDENTRY.has_options = True
+_INTFLOATMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_INTDOUBLEMAP_MAPFIELDENTRY.has_options = True
+_INTDOUBLEMAP_MAPFIELDENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_PBREQUEST_USERFEATURESENTRY.has_options = True
+_PBREQUEST_USERFEATURESENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_PBREQUEST_CONTEXTFEATURESENTRY.has_options = True
+_PBREQUEST_CONTEXTFEATURESENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_PBREQUEST_ITEMFEATURESENTRY.has_options = True
+_PBREQUEST_ITEMFEATURESENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_PBREQUEST_METADATAENTRY.has_options = True
+_PBREQUEST_METADATAENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_PBRESPONSE_MAPOUTPUTSENTRY.has_options = True
+_PBRESPONSE_MAPOUTPUTSENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_PBRESPONSE_GENERATEFEATURESENTRY.has_options = True
+_PBRESPONSE_GENERATEFEATURESENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_PBRESPONSE_RAWFEATURESENTRY.has_options = True
+_PBRESPONSE_RAWFEATURESENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
 # @@protoc_insertion_point(module_scope)
