@@ -160,7 +160,7 @@ class PredictClient:
         utcnow = datetime.datetime.now()
         content_type = self.content_type
         if len(content_type) == 0:
-            content_type = 'application/octet-stream'
+            content_type = self.headers.get('Content-Type', 'application/octet-stream')
 
         current_time = utcnow.strftime('%a, %d %b %Y %H:%M:%S GMT')
         if self.custom_url != '':

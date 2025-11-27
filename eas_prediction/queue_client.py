@@ -251,16 +251,16 @@ class QueueClient(PredictClient):
         common code for indexes related request
         """
         query = {'_indexes_': ','.join([str(ind) for ind in indexes])}
-        url = self._build_url(query)
         headers = self._with_identity()
-        return self._do_request(url, method, headers).data
+        return self._do_request(query, method, headers).data
 
-    def _do_request(self, url, method, headers, body=None):
+    def _do_request(self, query, method, headers, body=None):
         """
         common code for a http request
         """
         try:
             for i in range(self.retry_count + 1):
+                url = self._build_url(query)
                 resp = self.connection_pool.request(method, url,
                                                     headers=headers,
                                                     body=body,
@@ -288,19 +288,17 @@ class QueueClient(PredictClient):
             '_index_': index,
             '_trunc_': 'true'
         }
-        url = self._build_url(query)
 
         headers = self._with_identity()
-        return self._do_request(url, 'DELETE', headers).data
+        return self._do_request(query, 'DELETE', headers).data
 
     def put(self, data, tags: dict = {}):
         """
         put data into a queue service
         """
-        url = self._build_url(tags)
 
         headers = self._with_identity()
-        resp = self._do_request(url, 'POST', headers, data)
+        resp = self._do_request(tags, 'POST', headers, data)
         request_id = resp.headers[HeaderRequestId]
         return resp.data.decode('utf-8'), request_id
 
@@ -308,11 +306,18 @@ class QueueClient(PredictClient):
         """
         get the attributes of a queue service
         """
-        url = self._build_url({'_attrs_': 'true'})
 
         headers = self._with_identity()
-        resp = self._do_request(url, 'GET', headers)
-        return json.loads(resp.data.strip().decode('utf-8'))
+        resp = self._do_request({'_attrs_': 'true'}, 'GET', headers)
+        try:
+            data = resp.data.strip().decode('utf-8')
+            if not data:
+                return {}
+            return json.loads(data)
+        except (json.JSONDecodeError, AttributeError, UnicodeDecodeError) as e:
+            self.logger and self.logger.warning(
+                "Failed to parse attributes response: %s, response data: %s", str(e), repr(resp.data))
+            return {}
 
     def search(self,  index):
         """
@@ -326,11 +331,10 @@ class QueueClient(PredictClient):
             '_search_': 'true',
             '_index_': str(index)
         }
-        url = self._build_url(query)
 
         headers = self._with_identity()
         try:
-            resp = self._do_request(url, 'GET', headers)
+            resp = self._do_request(query, 'GET', headers)
         except PredictException as e:
             self.logger and self.logger.warning("search error: {}".format(e))
             return json.loads("{}")
@@ -352,12 +356,10 @@ class QueueClient(PredictClient):
 
         query.update(tags)
 
-        url = self._build_url(query)
-
         headers = self._with_identity()
         headers['Accept'] = 'application/vnd.google.protobuf'  # default
 
-        resp = self._do_request(url, 'GET', headers)
+        resp = self._do_request(query, 'GET', headers)
         dfl = DataFrameListCodec.decode(resp.data)
         return dfl.get_list()
 
