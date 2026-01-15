@@ -24,7 +24,7 @@ class CacheServerEndpoint(Endpoint):
         internal = False
         if namespace is not None and pod_name is not None:
             internal = True
-        url = 'http://%s/exported/apis/eas.alibaba-inc.k8s.io/v1/upstreams/%s%s' % \
+        url = 'http://%s/api/v1/servicediscovery/upstreams/%s%s' % \
               (self.domain, self.service_name, '?internal=true' if internal else '')
         endpoints = []
         try:
